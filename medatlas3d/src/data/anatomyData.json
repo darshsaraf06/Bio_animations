@@ -1,0 +1,246 @@
+{
+  "heart": {
+    "title": "The Human Heart",
+    "description": "The heart is a muscular organ roughly the size of a closed fist, weighing between 250–350 grams. Located in the mediastinum of the thoracic cavity, it beats approximately 100,000 times per day, pumping around 7,570 litres of blood through 96,000 kilometres of blood vessels.",
+    "parts": {
+      "mesh_0": {
+        "name": "Heart — Full Structure",
+        "category": "organ",
+        "description": "The human heart is a four-chambered muscular organ that serves as the primary pump of the cardiovascular system. Enclosed within the pericardial sac, it is positioned obliquely in the chest — approximately two-thirds to the left of the midline. The outer surface is covered by the epicardium and contains the coronary arteries and veins that supply the myocardium itself.",
+        "function": "Generates the pressure gradient that drives systemic and pulmonary circulation. The right side receives deoxygenated blood from the body and pumps it to the lungs; the left side receives oxygenated blood from the lungs and pumps it to the entire body.",
+        "clinical": "Heart failure, coronary artery disease, and arrhythmias are among the most common pathologies. Myocardial infarction (heart attack) occurs when coronary blood flow is obstructed.",
+        "facts": [
+          "Beats ~100,000 times per day",
+          "Pumps ~7,570 litres of blood daily",
+          "The left ventricle wall is 3× thicker than the right",
+          "Your heart has its own electrical system (SA node, AV node)"
+        ]
+      },
+      "left_ventricle": {
+        "name": "Left Ventricle",
+        "category": "chamber",
+        "description": "The left ventricle is the thickest chamber of the heart, with walls approximately 1.3–1.5 cm thick. It forms the apex and the majority of the left border and diaphragmatic surface of the heart. Internally, it features trabeculae carneae (muscular ridges) and papillary muscles that anchor the chordae tendineae of the mitral valve.",
+        "function": "Receives oxygenated blood from the left atrium via the mitral valve and pumps it into the aorta at systemic arterial pressure (~120 mmHg during systole). This is the most powerful chamber.",
+        "clinical": "Left ventricular hypertrophy (LVH) is a common finding in chronic hypertension. Reduced left ventricular ejection fraction (LVEF < 40%) indicates heart failure with reduced function.",
+        "facts": [
+          "Generates pressures up to 120 mmHg",
+          "Wall is ~3× thicker than right ventricle",
+          "Contains papillary muscles and trabeculae carneae",
+          "LVEF (ejection fraction) is a key cardiac health metric"
+        ]
+      },
+      "right_ventricle": {
+        "name": "Right Ventricle",
+        "category": "chamber",
+        "description": "The right ventricle is a crescent-shaped chamber that lies anterior to the left ventricle. Its walls are approximately 3–5 mm thick. It has a distinct inflow tract (from the tricuspid valve) and outflow tract (to the pulmonary valve), separated by the supraventricular crest.",
+        "function": "Receives deoxygenated blood from the right atrium and pumps it through the pulmonary valve into the pulmonary artery for gas exchange in the lungs. It operates at much lower pressures (~25 mmHg) than the left ventricle.",
+        "clinical": "Right ventricular failure can result from pulmonary hypertension, tricuspid valve disease, or right ventricular infarction. Cor pulmonale refers to right heart failure due to lung disease.",
+        "facts": [
+          "Operates at ~25 mmHg (much lower than left side)",
+          "Crescent-shaped in cross section",
+          "Contains moderator band (septomarginal trabeculation)",
+          "Anterior-most chamber of the heart"
+        ]
+      },
+      "left_atrium": {
+        "name": "Left Atrium",
+        "category": "chamber",
+        "description": "The left atrium is a thin-walled, smooth-surfaced chamber located posteriorly. It receives four pulmonary veins (two from each lung) carrying oxygenated blood. The left atrial appendage (auricle) is a remnant of the embryonic atrium and a common site for thrombus formation in atrial fibrillation.",
+        "function": "Collects oxygenated blood from the pulmonary veins and delivers it to the left ventricle through the mitral (bicuspid) valve during ventricular diastole.",
+        "clinical": "Left atrial enlargement is common in mitral valve disease and atrial fibrillation. The left atrial appendage is the most frequent site of thrombus formation in AF patients.",
+        "facts": [
+          "Receives blood from four pulmonary veins",
+          "Most posterior chamber of the heart",
+          "Left atrial appendage is a common clot site",
+          "Pressure: ~8-12 mmHg normally"
+        ]
+      },
+      "right_atrium": {
+        "name": "Right Atrium",
+        "category": "chamber",
+        "description": "The right atrium forms the right border of the heart and receives systemic venous return. The superior vena cava enters superiorly, the inferior vena cava enters inferiorly, and the coronary sinus drains the cardiac veins posteroinferiorly. Internally, the crista terminalis separates the smooth sinus venarum from the ridged pectinate muscles of the auricle.",
+        "function": "Receives deoxygenated blood from the systemic circulation (via the SVC, IVC, and coronary sinus) and passes it to the right ventricle through the tricuspid valve.",
+        "clinical": "Atrial septal defect (ASD) creates an abnormal communication between the right and left atria. Right atrial enlargement can occur in tricuspid valve disease or pulmonary hypertension.",
+        "facts": [
+          "Contains the SA node (pacemaker of the heart)",
+          "Has smooth and rough (pectinate) regions",
+          "Receives blood from SVC, IVC, and coronary sinus",
+          "Interatrial septum contains the fossa ovalis"
+        ]
+      },
+      "aorta": {
+        "name": "Aorta",
+        "category": "vessel",
+        "description": "The aorta is the largest artery in the human body, approximately 2.5 cm in diameter at its origin. It arises from the left ventricle, ascends, arches posteriorly over the left main bronchus (the aortic arch), then descends through the thorax and abdomen. The aortic root contains the sinuses of Valsalva, from which the coronary arteries originate.",
+        "function": "Primary high-pressure conduit that distributes oxygenated blood to every region of the body. The elastic walls stretch during systole and recoil during diastole, smoothing pulsatile flow (the Windkessel effect).",
+        "clinical": "Aortic aneurysm (abnormal dilation) can be life-threatening if ruptured. Aortic dissection occurs when blood enters the medial layer. Aortic stenosis and regurgitation affect the aortic valve.",
+        "facts": [
+          "Largest artery — ~2.5 cm diameter",
+          "Aortic arch gives off brachiocephalic, left common carotid, and left subclavian arteries",
+          "Coronary arteries originate from the aortic root",
+          "Elastic walls create the Windkessel effect"
+        ]
+      },
+      "pulmonary_artery": {
+        "name": "Pulmonary Artery",
+        "category": "vessel",
+        "description": "The pulmonary trunk emerges from the right ventricle and bifurcates into the left and right pulmonary arteries, which carry deoxygenated blood to the respective lungs. Unlike systemic arteries, pulmonary arteries carry deoxygenated blood. The pulmonary trunk is approximately 5 cm long before splitting.",
+        "function": "Transports deoxygenated blood from the right ventricle to the lungs for gas exchange. It forms the beginning of the pulmonary circulation where CO₂ is released and O₂ is absorbed.",
+        "clinical": "Pulmonary embolism (PE) occurs when a clot lodges in the pulmonary arteries, blocking blood flow. Pulmonary arterial hypertension (PAH) is a progressive condition with elevated pressures in the pulmonary vasculature.",
+        "facts": [
+          "Only arteries that carry deoxygenated blood",
+          "Pulmonary trunk is ~5 cm long",
+          "Pressure: ~25/8 mmHg (much lower than systemic)",
+          "Bifurcates into left and right pulmonary arteries"
+        ]
+      },
+      "superior_vena_cava": {
+        "name": "Superior Vena Cava",
+        "category": "vessel",
+        "description": "The superior vena cava (SVC) is formed by the union of the left and right brachiocephalic veins. It descends vertically to enter the right atrium at the level of the third costal cartilage. It drains the head, neck, upper limbs, and thorax. It has no valves.",
+        "function": "Returns deoxygenated blood from the upper half of the body (head, neck, arms, and upper thorax) to the right atrium.",
+        "clinical": "SVC syndrome results from obstruction or compression of the SVC, often by malignancy (e.g., lung cancer, lymphoma). Symptoms include facial swelling, dyspnea, and distended neck veins.",
+        "facts": [
+          "~7 cm long",
+          "Has no valves",
+          "Formed by union of brachiocephalic veins",
+          "SVC syndrome is a medical emergency"
+        ]
+      },
+      "inferior_vena_cava": {
+        "name": "Inferior Vena Cava",
+        "category": "vessel",
+        "description": "The inferior vena cava (IVC) is the largest vein in the body, formed by the confluence of the left and right common iliac veins at the level of L5. It ascends through the abdomen, pierces the diaphragm at the caval opening (T8), and enters the right atrium from below.",
+        "function": "Returns deoxygenated blood from the lower half of the body (legs, pelvis, abdomen) and abdominal organs to the right atrium. It receives hepatic, renal, adrenal, and iliac venous tributaries.",
+        "clinical": "IVC thrombosis can cause lower limb edema and renal complications. IVC filters are sometimes placed to prevent pulmonary embolism in patients with deep vein thrombosis.",
+        "facts": [
+          "Largest vein in the human body",
+          "Pierces diaphragm at T8 vertebral level",
+          "Receives venous drainage from most abdominal organs",
+          "IVC filters can prevent pulmonary embolism"
+        ]
+      },
+      "mitral_valve": {
+        "name": "Mitral Valve (Bicuspid Valve)",
+        "category": "valve",
+        "description": "The mitral valve is a bicuspid (two-leaflet) valve located between the left atrium and left ventricle. It has anterior and posterior leaflets attached by chordae tendineae to the anterolateral and posteromedial papillary muscles. It prevents backflow of blood into the left atrium during ventricular systole.",
+        "function": "Opens during diastole to allow blood to flow from the left atrium into the left ventricle. Closes during systole to prevent regurgitation. Normal mitral valve area is 4–6 cm².",
+        "clinical": "Mitral stenosis (often rheumatic) restricts flow. Mitral regurgitation allows backflow. Mitral valve prolapse is the most common valvular abnormality, where leaflets billow into the atrium.",
+        "facts": [
+          "Only valve with 2 leaflets (bicuspid)",
+          "Normal area: 4–6 cm²",
+          "Chordae tendineae prevent leaflet eversion",
+          "Mitral valve prolapse affects ~2-3% of population"
+        ]
+      },
+      "tricuspid_valve": {
+        "name": "Tricuspid Valve",
+        "category": "valve",
+        "description": "The tricuspid valve has three leaflets (anterior, posterior, and septal) and is located between the right atrium and right ventricle. It is larger than the mitral valve and has chordae tendineae connected to three papillary muscles.",
+        "function": "Permits unidirectional blood flow from the right atrium to the right ventricle during diastole and prevents backflow during systole.",
+        "clinical": "Tricuspid regurgitation is common in pulmonary hypertension and right heart failure. Tricuspid valve endocarditis is associated with IV drug use.",
+        "facts": [
+          "Three leaflets: anterior, posterior, septal",
+          "Largest cardiac valve by diameter",
+          "Endocarditis here often linked to IV drug use",
+          "Functional regurgitation common in heart failure"
+        ]
+      },
+      "coronary_arteries": {
+        "name": "Coronary Arteries",
+        "category": "vessel",
+        "description": "The coronary arteries are the first branches of the aorta, originating from the sinuses of Valsalva just above the aortic valve. The left coronary artery (LCA) bifurcates into the left anterior descending (LAD) and left circumflex (LCx) arteries. The right coronary artery (RCA) supplies the right ventricle and typically the inferior wall of the left ventricle.",
+        "function": "Supply the myocardium with oxygenated blood. The heart muscle requires continuous perfusion — cardiac extraction of oxygen from coronary blood is ~75%, the highest of any organ.",
+        "clinical": "Coronary artery disease (CAD) is the leading cause of death worldwide. Atherosclerotic plaque buildup narrows the lumen, reducing myocardial perfusion. Complete occlusion causes myocardial infarction (heart attack).",
+        "facts": [
+          "Heart extracts ~75% of oxygen from coronary blood",
+          "LAD supplies ~50% of left ventricular mass",
+          "Coronary blood flow occurs mainly during diastole",
+          "CAD is the #1 cause of death globally"
+        ]
+      }
+    },
+    "quiz": [
+      {
+        "id": 1,
+        "question": "How many chambers does the human heart have?",
+        "options": ["Two", "Three", "Four", "Five"],
+        "answer": 2,
+        "explanation": "The human heart has four chambers: two atria (upper chambers) and two ventricles (lower chambers)."
+      },
+      {
+        "id": 2,
+        "question": "Which chamber of the heart has the thickest walls?",
+        "options": ["Right atrium", "Left atrium", "Right ventricle", "Left ventricle"],
+        "answer": 3,
+        "explanation": "The left ventricle has the thickest walls (~1.3–1.5 cm) because it must generate enough pressure to pump blood through the entire systemic circulation."
+      },
+      {
+        "id": 3,
+        "question": "What is the function of the mitral valve?",
+        "options": [
+          "Prevents backflow from the aorta into the left ventricle",
+          "Prevents backflow from the left ventricle into the left atrium",
+          "Prevents backflow from the right ventricle into the right atrium",
+          "Prevents backflow from the pulmonary artery into the right ventricle"
+        ],
+        "answer": 1,
+        "explanation": "The mitral (bicuspid) valve sits between the left atrium and left ventricle, preventing blood from flowing back into the left atrium during ventricular contraction."
+      },
+      {
+        "id": 4,
+        "question": "Which vessel carries deoxygenated blood from the heart to the lungs?",
+        "options": ["Aorta", "Pulmonary vein", "Pulmonary artery", "Superior vena cava"],
+        "answer": 2,
+        "explanation": "The pulmonary artery carries deoxygenated blood from the right ventricle to the lungs for gas exchange. It is the only artery that carries deoxygenated blood."
+      },
+      {
+        "id": 5,
+        "question": "Where do the coronary arteries originate?",
+        "options": ["Pulmonary trunk", "Aortic root (sinuses of Valsalva)", "Left atrium", "Superior vena cava"],
+        "answer": 1,
+        "explanation": "The coronary arteries originate from the sinuses of Valsalva in the aortic root, just above the aortic valve."
+      },
+      {
+        "id": 6,
+        "question": "Approximately how many times does the heart beat per day?",
+        "options": ["10,000", "50,000", "100,000", "500,000"],
+        "answer": 2,
+        "explanation": "The heart beats approximately 100,000 times per day, pumping around 7,570 litres of blood."
+      },
+      {
+        "id": 7,
+        "question": "What is the natural pacemaker of the heart?",
+        "options": ["AV node", "SA node", "Bundle of His", "Purkinje fibers"],
+        "answer": 1,
+        "explanation": "The sinoatrial (SA) node, located in the right atrium, is the natural pacemaker. It generates electrical impulses that initiate each heartbeat."
+      },
+      {
+        "id": 8,
+        "question": "The LAD artery supplies approximately what percentage of the left ventricular mass?",
+        "options": ["25%", "35%", "50%", "75%"],
+        "answer": 2,
+        "explanation": "The left anterior descending (LAD) artery supplies approximately 50% of the left ventricular myocardial mass, making it critically important."
+      },
+      {
+        "id": 9,
+        "question": "What is the Windkessel effect?",
+        "options": [
+          "The electrical conduction through the heart",
+          "The elastic recoil of the aorta smoothing pulsatile blood flow",
+          "The contraction of the papillary muscles",
+          "The opening of the semilunar valves"
+        ],
+        "answer": 1,
+        "explanation": "The Windkessel effect refers to the elastic properties of the aorta and large arteries that stretch during systole and recoil during diastole, converting pulsatile flow into smoother continuous flow."
+      },
+      {
+        "id": 10,
+        "question": "Which valve has only two leaflets?",
+        "options": ["Aortic valve", "Pulmonary valve", "Tricuspid valve", "Mitral valve"],
+        "answer": 3,
+        "explanation": "The mitral valve (also called the bicuspid valve) is the only cardiac valve with two leaflets. All other valves have three."
+      }
+    ]
+  }
+}
