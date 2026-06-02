@@ -242,5 +242,281 @@
         "explanation": "The mitral valve (also called the bicuspid valve) is the only cardiac valve with two leaflets. All other valves have three."
       }
     ]
+  },
+  "lungs": {
+    "title": "The Lungs & Respiratory System",
+    "description": "The lungs are a pair of spongy, air-filled organs located on either side of the chest (thorax). The trachea (windpipe) conducts inhaled air into the lungs through its tubular branches, called bronchi, which then branch into smaller bronchioles leading to microscopic air sacs called alveoli where gas exchange occurs.",
+    "parts": {
+      "left_lung": {
+        "name": "Left Lung",
+        "category": "organ",
+        "description": "The left lung is slightly smaller than the right lung to accommodate the heart (cardiac notch). It is divided into two lobes: the superior lobe and inferior lobe, separated by the oblique fissure.",
+        "function": "Facilitates gas exchange. Oxygen enters the bloodstream from inhaled air, and carbon dioxide is removed from blood to be exhaled. Due to the cardiac notch, the left lung has about 10% less capacity than the right.",
+        "clinical": "Pneumonia, chronic obstructive pulmonary disease (COPD), and asthma commonly affect lung tissues, reducing surface area or causing airway constriction. Left-sided lung infections can spread to the pleural cavity (pleurisy).",
+        "facts": [
+          "Smaller than the right lung due to the heart's position",
+          "Has 2 lobes (superior and inferior)",
+          "Contains the cardiac notch on its anterior border",
+          "Separated by a single oblique fissure"
+        ]
+      },
+      "right_lung": {
+        "name": "Right Lung",
+        "category": "organ",
+        "description": "The right lung is shorter but wider than the left lung, and has a larger overall capacity. It is divided into three lobes: superior, middle, and inferior lobes, separated by the horizontal and oblique fissures.",
+        "function": "Enables respiration and gas exchange. Its larger volume allows it to perform approximately 55% of total pulmonary gas exchange under normal conditions.",
+        "clinical": "Right lung aspiration is clinically common because the right main bronchus is wider, shorter, and more vertical than the left main bronchus. Foreign objects are more likely to lodge here.",
+        "facts": [
+          "Has 3 lobes (superior, middle, inferior)",
+          "Larger and heavier than the left lung",
+          "Separated by horizontal and oblique fissures",
+          "Positioned slightly higher to accommodate the liver underneath"
+        ]
+      },
+      "trachea": {
+        "name": "Trachea (Windpipe)",
+        "category": "vessel",
+        "description": "The trachea is a cartilaginous tube that connects the larynx to the bronchi. It is reinforced by 16-20 C-shaped rings of hyaline cartilage, which prevent it from collapsing during inhalation.",
+        "function": "Serves as the main airway passage. Lined with ciliated pseudostratified columnar epithelium, it sweeps mucus and trapped foreign particles upward away from the lungs (mucociliary escalator).",
+        "clinical": "Tracheostomy is a surgical procedure to create an airway opening in the trachea during severe upper airway obstruction. Intubation guides a tube through the trachea to support mechanical ventilation.",
+        "facts": [
+          "Reinforced by 16-20 C-shaped cartilaginous rings",
+          "Lined with ciliated cells to filter air",
+          "Approximately 10-11 cm long in adults",
+          "Prevents collapsing under negative pressure during breathing"
+        ]
+      },
+      "bronchi": {
+        "name": "Bronchial Tree",
+        "category": "vessel",
+        "description": "At the carina, the trachea divides into the right and left primary (main) bronchi. These enter the lungs at the hilum and branch into secondary (lobar) bronchi, tertiary (segmental) bronchi, and eventually bronchioles.",
+        "function": "Conducts air into the individual lobes and segments of the lungs. The walls contain smooth muscle that can constrict (bronchoconstriction) or dilate (bronchodilation) to regulate airflow resistance.",
+        "clinical": "Asthma is characterized by chronic inflammation and hyperreactivity of the bronchioles, leading to bronchospasm. Bronchitis is an inflammation of the bronchial lining, causing mucus buildup.",
+        "facts": [
+          "Right main bronchus is wider and more vertical than the left",
+          "Branching forms a tree-like network of airways",
+          "Bronchi contain cartilage, while bronchioles lack cartilage",
+          "Controlled by autonomic nervous system to dilate/constrict"
+        ]
+      },
+      "alveoli": {
+        "name": "Alveoli (Air Sacs)",
+        "category": "valve",
+        "description": "Alveoli are microscopic, grape-like air sacs at the terminal ends of the bronchioles. They are surrounded by an extensive network of pulmonary capillaries. The alveolar wall consists of Type I (gas exchange) and Type II (surfactant-producing) pneumocytes.",
+        "function": "The primary site of gas exchange in the respiratory system. Oxygen and carbon dioxide diffuse across the thin respiratory membrane (less than 0.5 micrometres thick) down their partial pressure gradients.",
+        "clinical": "Emphysema (part of COPD) destroys alveolar walls, reducing the surface area for gas exchange. Pulmonary surfactant deficiency in premature infants causes Infant Respiratory Distress Syndrome (IRDS).",
+        "facts": [
+          "Human lungs contain ~300-500 million alveoli",
+          "Total surface area is roughly equivalent to a tennis court (~70-100 m²)",
+          "Type II alveolar cells secrete surfactant to reduce surface tension",
+          "Alveolar membrane is extremely thin (<0.5 microns) for rapid diffusion"
+        ]
+      }
+    },
+    "quiz": [
+      {
+        "id": 1,
+        "question": "How many lobes does the left lung have?",
+        "options": ["One", "Two", "Three", "Four"],
+        "answer": 1,
+        "explanation": "The left lung has two lobes (superior and inferior) to make room for the heart, whereas the right lung has three lobes."
+      },
+      {
+        "id": 2,
+        "question": "Why are inhaled foreign objects more likely to enter the right lung than the left?",
+        "options": [
+          "The right lung is larger",
+          "The right main bronchus is wider, shorter, and more vertical",
+          "The left lung cardiac notch blocks foreign particles",
+          "Gravity pulls objects to the right"
+        ],
+        "answer": 1,
+        "explanation": "The right primary bronchus is wider, shorter, and runs more vertically than the left, making it the most common destination for aspirated foreign bodies."
+      },
+      {
+        "id": 3,
+        "question": "What is the primary site of gas exchange in the lungs?",
+        "options": ["Trachea", "Bronchioles", "Alveoli", "Pleural cavity"],
+        "answer": 2,
+        "explanation": "Alveoli are the microscopic air sacs where oxygen and carbon dioxide diffuse between the lungs and the surrounding blood capillaries."
+      },
+      {
+        "id": 4,
+        "question": "Which cells produce pulmonary surfactant to prevent alveolar collapse?",
+        "options": ["Type I Pneumocytes", "Type II Pneumocytes", "Alveolar Macrophages", "Goblet Cells"],
+        "answer": 1,
+        "explanation": "Type II alveolar cells (pneumocytes) secrete surfactant, a lipid-protein mixture that reduces surface tension in the alveoli, preventing them from collapsing during exhalation."
+      },
+      {
+        "id": 5,
+        "question": "What cartilaginous structure reinforces the trachea to keep it open?",
+        "options": ["O-shaped rings", "C-shaped rings", "S-shaped plates", "V-shaped ridges"],
+        "answer": 1,
+        "explanation": "The trachea is held open by C-shaped rings of hyaline cartilage. The open part of the 'C' faces posteriorly, allowing the esophagus to expand slightly when food is swallowed."
+      }
+    ]
+  },
+  "liver": {
+    "title": "The Liver & Gallbladder",
+    "description": "The liver is the largest internal organ in the body, weighing about 1.5 kilograms. Positioned in the upper right quadrant of the abdomen, it performs over 500 vital functions, including chemical detoxification, protein synthesis, glycogen storage, and the production of bile for fat digestion.",
+    "parts": {
+      "right_lobe": {
+        "name": "Right Lobe of the Liver",
+        "category": "organ",
+        "description": "The right lobe is the largest lobe of the liver, accounting for about five-sixths of the organ's total mass. It is separated from the left lobe on the anterior surface by the falciform ligament.",
+        "function": "Houses the bulk of the hepatocytes (liver cells) responsible for metabolizing carbohydrates, lipids, and proteins, filtering toxic substances, and synthesizing bile.",
+        "clinical": "Liver cirrhosis, often caused by chronic alcohol abuse or hepatitis infections, leads to progressive scarring and loss of function. The right lobe is the primary target for biopsy and resection.",
+        "facts": [
+          "Accounts for ~5/6 of the liver's total mass",
+          "Separated from left lobe by the falciform ligament",
+          "Contains caudate and quadrate lobes on its visceral surface",
+          "Has an extremely high capacity for cellular regeneration"
+        ]
+      },
+      "left_lobe": {
+        "name": "Left Lobe of the Liver",
+        "category": "organ",
+        "description": "The left lobe is much smaller than the right lobe, flattened from side to side, and situated mainly in the epigastric region of the abdomen. It has a smooth upper surface that fits under the diaphragm.",
+        "function": "Performs identical metabolic, storage, and secretory functions as the right lobe, but on a smaller scale due to its size.",
+        "clinical": "Due to the liver's dual blood supply and segmental anatomy, the left lobe can be harvested from a living donor for transplant into a child or small adult, and both the donor's and recipient's segments will regenerate to full size.",
+        "facts": [
+          "Situated in the epigastric and left hypochondriac regions",
+          "Much smaller and thinner than the right lobe",
+          "Can be safely donated for living-donor transplants",
+          "Regenerates to normal volume within weeks after partial resection"
+        ]
+      },
+      "gallbladder": {
+        "name": "Gallbladder",
+        "category": "valve",
+        "description": "The gallbladder is a small, pear-shaped muscular sac located in a shallow depression on the inferior surface of the liver's right lobe. It connects to the biliary system via the cystic duct.",
+        "function": "Stores and concentrates bile produced by the liver. When fatty food enters the duodenum, the hormone cholecystokinin (CCK) triggers gallbladder contraction, expelling bile into the common bile duct to emulsify fats.",
+        "clinical": "Cholelithiasis (gallstones) can form when bile contains too much cholesterol or bilirubin. Obstruction of the cystic duct leads to cholecystitis (acute inflammation), which often requires surgical removal (cholecystectomy).",
+        "facts": [
+          "Stores and concentrates bile (does not produce it)",
+          "Contraction is triggered by the hormone cholecystokinin (CCK)",
+          "Pear-shaped sac ~7-10 cm long",
+          "Can be removed without major impact on digestion (liver still drains bile)"
+        ]
+      },
+      "hepatic_portal": {
+        "name": "Hepatic Portal Vein",
+        "category": "vessel",
+        "description": "The hepatic portal vein is a large blood vessel formed by the confluence of the superior mesenteric and splenic veins. It carries blood from the gastrointestinal tract, spleen, and pancreas to the liver.",
+        "function": "Supplies the liver with ~75% of its total blood volume. This blood is rich in nutrients and toxins absorbed from the digestive tract, which the liver processes and purifies before it returns to systemic circulation.",
+        "clinical": "Portal hypertension (elevated pressure in the portal system) is a severe complication of liver cirrhosis, leading to ascites (fluid in the abdomen) and life-threatening esophageal varices (bleeding veins).",
+        "facts": [
+          "Supplies ~75% of the liver's blood flow (but carries deoxygenated blood)",
+          "Formed by splenic and superior mesenteric veins",
+          "Delivers absorbed nutrients directly to hepatocytes",
+          "Obstruction leads to portal hypertension"
+        ]
+      }
+    },
+    "quiz": [
+      {
+        "id": 1,
+        "question": "What is the primary function of the gallbladder?",
+        "options": ["Produce bile", "Store and concentrate bile", "Digest proteins", "Detoxify alcohol"],
+        "answer": 1,
+        "explanation": "The gallbladder does not produce bile (the liver does). It stores and concentrates bile, releasing it into the small intestine to help digest fats."
+      },
+      {
+        "id": 2,
+        "question": "Which vessel supplies the majority of blood flow to the liver?",
+        "options": ["Hepatic artery", "Hepatic portal vein", "Celiac trunk", "Inferior vena cava"],
+        "answer": 1,
+        "explanation": "The hepatic portal vein supplies about 75% of the liver's blood flow, delivering nutrient-rich but oxygen-poor blood directly from the digestive tract."
+      },
+      {
+        "id": 3,
+        "question": "What hormone triggers the gallbladder to contract and release bile?",
+        "options": ["Insulin", "Gastrin", "Cholecystokinin (CCK)", "Secretin"],
+        "answer": 2,
+        "explanation": "Cholecystokinin (CCK) is released by cells in the duodenum in response to fatty foods, triggering gallbladder contraction and pancreatic enzyme secretion."
+      },
+      {
+        "id": 4,
+        "question": "What is the medical term for gallstone formation?",
+        "options": ["Cholecystitis", "Cholelithiasis", "Cirrhosis", "Hepatitis"],
+        "answer": 1,
+        "explanation": "Cholelithiasis is the presence of gallstones, which are crystallized deposits of bile components (such as cholesterol or calcium salts) in the gallbladder."
+      },
+      {
+        "id": 5,
+        "question": "What ligament separates the left and right lobes of the liver on its anterior surface?",
+        "options": ["Coronary ligament", "Ligamentum teres", "Falciform ligament", "Hepatoduodenal ligament"],
+        "answer": 2,
+        "explanation": "The falciform ligament is a broad, thin fold of peritoneum that attaches the liver to the anterior abdominal wall and diaphragm, separating the right and left lobes."
+      }
+    ]
+  },
+  "all": {
+    "title": "Combined Thoracic & Abdominal Anatomy",
+    "description": "An interactive 3D map showing the spatial, structural, and circulatory relationships between the Heart, Lungs, and Liver within the upper body cavity.",
+    "parts": {
+      "heart": {
+        "name": "The Heart",
+        "category": "organ",
+        "description": "Positioned obliquely in the mediastinum between the two lungs. Serves as the central pump of the cardiovascular system.",
+        "function": "Pumps deoxygenated blood to the lungs for oxygenation and pumps oxygen-rich blood to the rest of the body, including the liver.",
+        "clinical": "Heart failure causes fluid backflow; left-sided failure causes pulmonary congestion (lungs), while right-sided failure leads to systemic congestion (enlarged liver/hepatomegaly).",
+        "facts": [
+          "Positioned in the middle mediastinum",
+          "Flanked on either side by the lungs",
+          "Rests on the central tendon of the diaphragm",
+          "Interacts dynamically with lungs and liver via circulation"
+        ]
+      },
+      "left_lung": {
+        "name": "The Lungs (Respiration)",
+        "category": "organ",
+        "description": "Spongy respiratory organs that flank the heart. The right lung sits slightly higher due to the massive liver located immediately below the diaphragm.",
+        "function": "Responsible for oxygenating blood received from the heart and removing carbon dioxide before sending blood back to the left atrium.",
+        "clinical": "Pulmonary embolism blocks blood flow from the heart to the lungs. Emphysema reduces the area available for gas exchange, forcing the heart to pump harder.",
+        "facts": [
+          "Receive deoxygenated blood from the pulmonary trunk",
+          "Return oxygenated blood to the left atrium",
+          "Envelop the heart in the thoracic cavity",
+          "Supported from below by the diaphragm muscle"
+        ]
+      },
+      "liver": {
+        "name": "The Liver (Metabolism)",
+        "category": "organ",
+        "description": "The largest internal organ, situated in the upper right quadrant of the abdomen directly beneath the diaphragm and inferior to the heart and lungs.",
+        "function": "Processes blood from the digestive tract via the hepatic portal system and receives oxygenated blood from the heart via the hepatic artery.",
+        "clinical": "Congestive heart failure leads to passive congestion of the liver, causing abdominal pain and abnormal liver function tests (cardiac cirrhosis).",
+        "facts": [
+          "Largest abdominal organ",
+          "Located directly below the diaphragm and right lung",
+          "Drains into the inferior vena cava (IVC) via hepatic veins",
+          "Processes all nutrients and toxins entering through digestion"
+        ]
+      }
+    },
+    "quiz": [
+      {
+        "id": 1,
+        "question": "Which organ sits directly below the diaphragm on the right side of the body?",
+        "options": ["Heart", "Right Lung", "Liver", "Spleen"],
+        "answer": 2,
+        "explanation": "The liver is located in the upper right quadrant of the abdomen, directly underneath the diaphragm and inferior to the right lung."
+      },
+      {
+        "id": 2,
+        "question": "Which clinical condition is characterized by an enlarged liver due to right-sided heart failure?",
+        "options": ["Cardiomyopathy", "Hepatomegaly (Passive Congestion)", "Cirrhosis", "Pulmonary Embolism"],
+        "answer": 1,
+        "explanation": "In right-sided heart failure, the heart cannot efficiently pump blood into the lungs. Blood backs up into the vena cava and hepatic veins, causing liver enlargement (congestive hepatomegaly)."
+      },
+      {
+        "id": 3,
+        "question": "Where does the oxygenated blood from the lungs flow next?",
+        "options": ["Right Atrium", "Left Atrium", "Right Ventricle", "Hepatic Portal Vein"],
+        "answer": 1,
+        "explanation": "Oxygen-rich blood exits the lungs via the pulmonary veins and enters the left atrium of the heart, from where it is pumped into the left ventricle and out to the body."
+      }
+    ]
   }
 }

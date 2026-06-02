@@ -1,16 +1,16 @@
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
 import Scene from '../components/Viewer/Scene'
 import anatomyData from '../data/anatomyData.json'
 
 /* ─────────────────────────────────────────────
    INFO PANEL — Right side anatomy details
    ───────────────────────────────────────────── */
-function InfoPanel({ selectedPart, onClose, onStartQuiz }) {
+function InfoPanel({ selectedPart, onClose, onStartQuiz, activeOrgan }) {
   const [activeTab, setActiveTab] = useState('overview')
 
   if (!selectedPart) return null
 
-  const partInfo = anatomyData.heart.parts[selectedPart]
+  const partInfo = anatomyData[activeOrgan]?.parts?.[selectedPart]
   if (!partInfo) return null
 
   return (
@@ -78,11 +78,11 @@ function InfoPanel({ selectedPart, onClose, onStartQuiz }) {
 /* ─────────────────────────────────────────────
    SEARCH PANEL — Left side anatomy search
    ───────────────────────────────────────────── */
-function SearchPanel({ onSelectResult }) {
+function SearchPanel({ onSelectResult, activeOrgan }) {
   const [query, setQuery] = useState('')
   const [open, setOpen] = useState(false)
 
-  const allParts = Object.entries(anatomyData.heart.parts).map(([id, data]) => ({
+  const allParts = Object.entries(anatomyData[activeOrgan]?.parts || {}).map(([id, data]) => ({
     id,
     ...data,
   }))
@@ -134,19 +134,19 @@ function SearchPanel({ onSelectResult }) {
 /* ─────────────────────────────────────────────
    PARTS LIST — Left side structure browser
    ───────────────────────────────────────────── */
-function PartsList({ selectedPart, onSelectPart }) {
+function PartsList({ selectedPart, onSelectPart, activeOrgan }) {
   const categories = {}
-  Object.entries(anatomyData.heart.parts).forEach(([id, data]) => {
+  Object.entries(anatomyData[activeOrgan]?.parts || {}).forEach(([id, data]) => {
     const cat = data.category || 'other'
     if (!categories[cat]) categories[cat] = []
     categories[cat].push({ id, ...data })
   })
 
   const categoryLabels = {
-    organ: '❤️ Organ',
+    organ: '🧬 Organs',
     chamber: '🫀 Chambers',
-    vessel: '🩸 Blood Vessels',
-    valve: '🔒 Valves'
+    vessel: '🩸 Vessels & Airways',
+    valve: '🔒 Valves & Alveoli'
   }
 
   return (
@@ -253,8 +253,8 @@ function CrossSectionPanel({ clipEnabled, setClipEnabled, clipPosition, setClipP
 /* ─────────────────────────────────────────────
    QUIZ MODULE — Bottom overlay quiz
    ───────────────────────────────────────────── */
-function QuizModule({ onClose }) {
-  const questions = anatomyData.heart.quiz
+function QuizModule({ onClose, activeOrgan }) {
+  const questions = anatomyData[activeOrgan]?.quiz || []
   const [current, setCurrent] = useState(0)
   const [selected, setSelected] = useState(null)
   const [score, setScore] = useState(0)
@@ -357,18 +357,55 @@ function QuizModule({ onClose }) {
 /* ─────────────────────────────────────────────
    MAIN VIEWER PAGE
    ───────────────────────────────────────────── */
+const ORGAN_BANNERS = {
+  heart: { icon: '🫀', title: 'Human Heart', desc: 'Muscular organ pumping ~2,000 gallons of blood daily through 60,000 miles of vessels' },
+  lungs: { icon: '🫁', title: 'Respiratory System', desc: 'Two spongy organs facilitating gas exchange across 70m² of alveolar surface area' },
+  liver: { icon: '🧬', title: 'Liver', desc: 'Largest internal organ performing 500+ vital functions including detoxification & bile production' },
+  all:   { icon: '🧍', title: 'Thoracic & Abdominal Organs', desc: 'Combined view — heart, lungs, and liver in anatomical position' }
+}
+
 export default function ViewerPage() {
   const [selectedPart, setSelectedPart] = useState(null)
   const [quizOpen, setQuizOpen] = useState(false)
+  const [activeOrgan, setActiveOrgan] = useState('heart')
 
   // Cross-section state
   const [clipEnabled, setClipEnabled] = useState(false)
   const [clipPosition, setClipPosition] = useState(0)
   const [clipAxis, setClipAxis] = useState('x')
 
+  // Screen-space projected labels — stored in ref to avoid re-renders each frame
+  const [projectedLabels, setProjectedLabels] = useState({})
+  const labelsRef = useRef({})
+  const rafId = useRef(null)
+
+  // Throttle projected label updates to ~30fps to avoid excessive React re-renders
+  const handleProjectedLabels = useCallback((labels) => {
+    labelsRef.current = labels
+    if (!rafId.current) {
+      rafId.current = requestAnimationFrame(() => {
+        setProjectedLabels({ ...labelsRef.current })
+        rafId.current = null
+      })
+    }
+  }, [])
+
+  useEffect(() => {
+    return () => {
+      if (rafId.current) cancelAnimationFrame(rafId.current)
+    }
+  }, [])
+
   const handleSelectPart = useCallback((partId) => {
     setSelectedPart(partId)
   }, [])
+
+  const handleOrganChange = useCallback((organId) => {
+    setActiveOrgan(organId)
+    setSelectedPart(null)
+  }, [])
+
+  const banner = ORGAN_BANNERS[activeOrgan]
 
   return (
     <div className="viewer-root">
@@ -378,17 +415,28 @@ export default function ViewerPage() {
           <span className="logo-icon">🫀</span>
           <h1 className="logo-text">MedAtlas3D</h1>
         </div>
-        <nav className="top-nav">
-          <span className="nav-label">Heart</span>
-          <span className="nav-dot">·</span>
-          <span className="nav-sub">Interactive Anatomy</span>
+        <nav className="organ-tabs">
+          {[
+            { id: 'heart', label: '🫀 Heart' },
+            { id: 'lungs', label: '🫁 Lungs' },
+            { id: 'liver', label: '🧬 Liver' },
+            { id: 'all', label: '🧍 All Organs' }
+          ].map(tab => (
+            <button
+              key={tab.id}
+              className={`organ-tab-btn ${activeOrgan === tab.id ? 'active' : ''}`}
+              onClick={() => handleOrganChange(tab.id)}
+            >
+              {tab.label}
+            </button>
+          ))}
         </nav>
       </header>
 
       {/* ── Left Column ── */}
       <aside className="left-column">
-        <SearchPanel onSelectResult={handleSelectPart} />
-        <PartsList selectedPart={selectedPart} onSelectPart={handleSelectPart} />
+        <SearchPanel onSelectResult={handleSelectPart} activeOrgan={activeOrgan} />
+        <PartsList selectedPart={selectedPart} onSelectPart={handleSelectPart} activeOrgan={activeOrgan} />
         <CrossSectionPanel
           clipEnabled={clipEnabled}
           setClipEnabled={setClipEnabled}
@@ -406,17 +454,61 @@ export default function ViewerPage() {
         clipEnabled={clipEnabled}
         clipPosition={clipPosition}
         clipAxis={clipAxis}
+        activeOrgan={activeOrgan}
+        onProjectedLabels={handleProjectedLabels}
       />
+
+      {/* ── Screen-space Labels Overlay ── */}
+      <div className="labels-overlay">
+        {Object.entries(projectedLabels).map(([id, data]) => {
+          if (data.behind) return null
+          const isSelected = selectedPart === id
+          const showLabel = isSelected
+
+          return (
+            <div
+              key={id}
+              className={`screen-label ${isSelected ? 'selected' : ''}`}
+              style={{
+                left: `${data.x}px`,
+                top: `${data.y}px`,
+              }}
+              onClick={() => handleSelectPart(id)}
+            >
+              <div className="screen-label-dot" />
+              {showLabel && (
+                <div className="screen-label-tag">
+                  <div className="screen-label-connector" />
+                  <div className="screen-label-text">{data.label}</div>
+                </div>
+              )}
+            </div>
+          )
+        })}
+      </div>
 
       {/* ── Right Panel ── */}
       <InfoPanel
         selectedPart={selectedPart}
         onClose={() => setSelectedPart(null)}
         onStartQuiz={() => setQuizOpen(true)}
+        activeOrgan={activeOrgan}
       />
 
       {/* ── Quiz Overlay ── */}
-      {quizOpen && <QuizModule onClose={() => setQuizOpen(false)} />}
+      {quizOpen && <QuizModule onClose={() => setQuizOpen(false)} activeOrgan={activeOrgan} />}
+
+      {/* ── Organ Description Banner ── */}
+      {banner && !selectedPart && (
+        <div className="organ-banner" key={activeOrgan}>
+          <span className="organ-banner-icon">{banner.icon}</span>
+          <div className="organ-banner-content">
+            <span className="organ-banner-title">{banner.title}</span>
+            <span className="organ-banner-desc">{banner.desc}</span>
+          </div>
+          <span className="organ-banner-pulse" />
+        </div>
+      )}
 
       {/* ── Bottom Bar ── */}
       <footer className="bottom-bar">

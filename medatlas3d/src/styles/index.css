@@ -34,16 +34,47 @@ body {
   background: radial-gradient(ellipse at 50% 40%, #111827 0%, #07070b 70%);
 }
 
+/* Ambient animated background glow */
+.viewer-root::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(600px circle at 20% 30%, rgba(168, 216, 240, 0.04), transparent 50%),
+    radial-gradient(500px circle at 80% 70%, rgba(240, 168, 216, 0.03), transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+  animation: ambientShift 20s ease-in-out infinite alternate;
+}
+
+@keyframes ambientShift {
+  0%   { opacity: 1; }
+  50%  { opacity: 0.6; }
+  100% { opacity: 1; }
+}
+
 /* ═══════════════════════════════════════════
    GLASS PANEL (shared)
    ═══════════════════════════════════════════ */
 .glass-panel {
-  background: rgba(12, 12, 18, 0.75);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(12, 12, 18, 0.78);
+  backdrop-filter: blur(24px) saturate(1.3);
+  -webkit-backdrop-filter: blur(24px) saturate(1.3);
+  border: 1px solid rgba(255, 255, 255, 0.07);
   border-radius: 20px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.45),
+    0 0 0 0.5px rgba(255, 255, 255, 0.04) inset,
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.glass-panel:hover {
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.5),
+    0 0 0 0.5px rgba(255, 255, 255, 0.06) inset,
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 
 /* ═══════════════════════════════════════════
@@ -59,9 +90,10 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 16px 28px;
-  background: rgba(7, 7, 11, 0.6);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(7, 7, 11, 0.65);
+  backdrop-filter: blur(16px) saturate(1.4);
+  -webkit-backdrop-filter: blur(16px) saturate(1.4);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .logo-group {
@@ -84,21 +116,36 @@ body {
   background-clip: text;
 }
 
-.top-nav {
+.organ-tabs {
   display: flex;
-  align-items: center;
   gap: 8px;
-  font-size: 13px;
-  color: rgba(255, 255, 255, 0.4);
 }
 
-.nav-label {
-  color: #a8d8f0;
+.organ-tab-btn {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.5);
+  padding: 6px 14px;
+  border-radius: 10px;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
   font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
-.nav-dot {
-  opacity: 0.3;
+.organ-tab-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #f1f5f9;
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.organ-tab-btn.active {
+  background: linear-gradient(135deg, rgba(168, 216, 240, 0.18), rgba(240, 168, 216, 0.12));
+  border-color: rgba(168, 216, 240, 0.45);
+  color: #a8d8f0;
+  box-shadow: 0 4px 16px rgba(168, 216, 240, 0.08);
+  font-weight: 600;
 }
 
 /* ═══════════════════════════════════════════
@@ -293,12 +340,12 @@ body {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  animation: slideInRight 0.3s ease-out;
+  animation: slideInRight 0.35s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
 @keyframes slideInRight {
-  from { opacity: 0; transform: translateX(20px); }
-  to   { opacity: 1; transform: translateX(0); }
+  from { opacity: 0; transform: translateX(24px) scale(0.98); }
+  to   { opacity: 1; transform: translateX(0) scale(1); }
 }
 
 .panel-header {
@@ -676,41 +723,98 @@ body {
 }
 
 /* ═══════════════════════════════════════════
-   3D ANNOTATION LABELS
+   SCREEN-SPACE LABELS OVERLAY
    ═══════════════════════════════════════════ */
-.annotation-label {
+.labels-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 12;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.screen-label {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  pointer-events: auto;
+  cursor: pointer;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0;
-  animation: annotationFadeIn 0.35s ease-out;
+  /* hardware-accelerated movement */
+  will-change: left, top;
 }
 
-@keyframes annotationFadeIn {
-  from { opacity: 0; transform: translateY(6px) scale(0.9); }
+/* The dot */
+.screen-label-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.35);
+  border: 1.5px solid rgba(255, 255, 255, 0.15);
+  transition: all 0.2s ease;
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.1);
+}
+
+.screen-label:hover .screen-label-dot {
+  background: rgba(168, 216, 240, 0.8);
+  border-color: rgba(168, 216, 240, 0.5);
+  box-shadow: 0 0 12px rgba(168, 216, 240, 0.3);
+  transform: scale(1.3);
+}
+
+.screen-label.selected .screen-label-dot {
+  width: 12px;
+  height: 12px;
+  background: #f0a8d8;
+  border-color: rgba(240, 168, 216, 0.6);
+  box-shadow:
+    0 0 12px rgba(240, 168, 216, 0.4),
+    0 0 24px rgba(240, 168, 216, 0.15);
+  animation: dotPulse 2s ease-in-out infinite;
+}
+
+@keyframes dotPulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 12px rgba(240, 168, 216, 0.4), 0 0 24px rgba(240, 168, 216, 0.15); }
+  50%      { transform: scale(1.25); box-shadow: 0 0 16px rgba(240, 168, 216, 0.55), 0 0 32px rgba(240, 168, 216, 0.25); }
+}
+
+/* Label tag + connector */
+.screen-label-tag {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: labelSlideIn 0.3s cubic-bezier(0.22, 0.61, 0.36, 1);
+  pointer-events: none;
+}
+
+@keyframes labelSlideIn {
+  from { opacity: 0; transform: translateY(6px) scale(0.92); }
   to   { opacity: 1; transform: translateY(0) scale(1); }
 }
 
-.annotation-connector {
+.screen-label-connector {
   width: 1px;
-  height: 14px;
-  background: linear-gradient(to top, rgba(168, 216, 240, 0.6), rgba(168, 216, 240, 0));
+  height: 16px;
+  background: linear-gradient(to bottom, rgba(240, 168, 216, 0.6), rgba(240, 168, 216, 0));
 }
 
-.annotation-text {
-  padding: 5px 12px;
-  background: rgba(10, 10, 18, 0.85);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(168, 216, 240, 0.25);
+.screen-label-text {
+  padding: 5px 14px;
+  background: rgba(10, 10, 18, 0.88);
+  backdrop-filter: blur(16px) saturate(1.3);
+  -webkit-backdrop-filter: blur(16px) saturate(1.3);
+  border: 1px solid rgba(240, 168, 216, 0.35);
   border-radius: 8px;
-  color: #a8d8f0;
+  color: #f0a8d8;
   font-family: 'Inter', sans-serif;
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.3px;
   white-space: nowrap;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4),
-              0 0 12px rgba(168, 216, 240, 0.08);
+  box-shadow:
+    0 4px 16px rgba(0, 0, 0, 0.5),
+    0 0 12px rgba(240, 168, 216, 0.1);
 }
 
 /* ═══════════════════════════════════════════
@@ -965,4 +1069,75 @@ body {
   font-size: 12px;
   color: rgba(255, 255, 255, 0.2);
   letter-spacing: 0.3px;
+}
+
+/* ═══════════════════════════════════════════
+   ORGAN DESCRIPTION BANNER
+   ═══════════════════════════════════════════ */
+.organ-banner {
+  position: absolute;
+  bottom: 52px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 15;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 22px;
+  background: rgba(12, 12, 18, 0.82);
+  backdrop-filter: blur(20px) saturate(1.3);
+  -webkit-backdrop-filter: blur(20px) saturate(1.3);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 16px;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  animation: bannerSlideUp 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+  max-width: 600px;
+  pointer-events: none;
+}
+
+@keyframes bannerSlideUp {
+  from { opacity: 0; transform: translateX(-50%) translateY(16px); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+.organ-banner-icon {
+  font-size: 28px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.organ-banner-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.organ-banner-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #f1f5f9;
+  letter-spacing: 0.3px;
+}
+
+.organ-banner-desc {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.4);
+  line-height: 1.4;
+}
+
+.organ-banner-pulse {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #a8d8f0;
+  flex-shrink: 0;
+  animation: bannerPulse 2s ease-in-out infinite;
+  box-shadow: 0 0 8px rgba(168, 216, 240, 0.3);
+}
+
+@keyframes bannerPulse {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50%      { opacity: 1;   transform: scale(1.3); }
 }
