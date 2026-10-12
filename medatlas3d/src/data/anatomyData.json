@@ -164,14 +164,24 @@
       {
         "id": 1,
         "question": "How many chambers does the human heart have?",
-        "options": ["Two", "Three", "Four", "Five"],
+        "options": [
+          "Two",
+          "Three",
+          "Four",
+          "Five"
+        ],
         "answer": 2,
         "explanation": "The human heart has four chambers: two atria (upper chambers) and two ventricles (lower chambers)."
       },
       {
         "id": 2,
         "question": "Which chamber of the heart has the thickest walls?",
-        "options": ["Right atrium", "Left atrium", "Right ventricle", "Left ventricle"],
+        "options": [
+          "Right atrium",
+          "Left atrium",
+          "Right ventricle",
+          "Left ventricle"
+        ],
         "answer": 3,
         "explanation": "The left ventricle has the thickest walls (~1.3–1.5 cm) because it must generate enough pressure to pump blood through the entire systemic circulation."
       },
@@ -190,35 +200,60 @@
       {
         "id": 4,
         "question": "Which vessel carries deoxygenated blood from the heart to the lungs?",
-        "options": ["Aorta", "Pulmonary vein", "Pulmonary artery", "Superior vena cava"],
+        "options": [
+          "Aorta",
+          "Pulmonary vein",
+          "Pulmonary artery",
+          "Superior vena cava"
+        ],
         "answer": 2,
         "explanation": "The pulmonary artery carries deoxygenated blood from the right ventricle to the lungs for gas exchange. It is the only artery that carries deoxygenated blood."
       },
       {
         "id": 5,
         "question": "Where do the coronary arteries originate?",
-        "options": ["Pulmonary trunk", "Aortic root (sinuses of Valsalva)", "Left atrium", "Superior vena cava"],
+        "options": [
+          "Pulmonary trunk",
+          "Aortic root (sinuses of Valsalva)",
+          "Left atrium",
+          "Superior vena cava"
+        ],
         "answer": 1,
         "explanation": "The coronary arteries originate from the sinuses of Valsalva in the aortic root, just above the aortic valve."
       },
       {
         "id": 6,
         "question": "Approximately how many times does the heart beat per day?",
-        "options": ["10,000", "50,000", "100,000", "500,000"],
+        "options": [
+          "10,000",
+          "50,000",
+          "100,000",
+          "500,000"
+        ],
         "answer": 2,
         "explanation": "The heart beats approximately 100,000 times per day, pumping around 7,570 litres of blood."
       },
       {
         "id": 7,
         "question": "What is the natural pacemaker of the heart?",
-        "options": ["AV node", "SA node", "Bundle of His", "Purkinje fibers"],
+        "options": [
+          "AV node",
+          "SA node",
+          "Bundle of His",
+          "Purkinje fibers"
+        ],
         "answer": 1,
         "explanation": "The sinoatrial (SA) node, located in the right atrium, is the natural pacemaker. It generates electrical impulses that initiate each heartbeat."
       },
       {
         "id": 8,
         "question": "The LAD artery supplies approximately what percentage of the left ventricular mass?",
-        "options": ["25%", "35%", "50%", "75%"],
+        "options": [
+          "25%",
+          "35%",
+          "50%",
+          "75%"
+        ],
         "answer": 2,
         "explanation": "The left anterior descending (LAD) artery supplies approximately 50% of the left ventricular myocardial mass, making it critically important."
       },
@@ -237,7 +272,12 @@
       {
         "id": 10,
         "question": "Which valve has only two leaflets?",
-        "options": ["Aortic valve", "Pulmonary valve", "Tricuspid valve", "Mitral valve"],
+        "options": [
+          "Aortic valve",
+          "Pulmonary valve",
+          "Tricuspid valve",
+          "Mitral valve"
+        ],
         "answer": 3,
         "explanation": "The mitral valve (also called the bicuspid valve) is the only cardiac valve with two leaflets. All other valves have three."
       }
@@ -317,7 +357,12 @@
       {
         "id": 1,
         "question": "How many lobes does the left lung have?",
-        "options": ["One", "Two", "Three", "Four"],
+        "options": [
+          "One",
+          "Two",
+          "Three",
+          "Four"
+        ],
         "answer": 1,
         "explanation": "The left lung has two lobes (superior and inferior) to make room for the heart, whereas the right lung has three lobes."
       },
@@ -336,21 +381,36 @@
       {
         "id": 3,
         "question": "What is the primary site of gas exchange in the lungs?",
-        "options": ["Trachea", "Bronchioles", "Alveoli", "Pleural cavity"],
+        "options": [
+          "Trachea",
+          "Bronchioles",
+          "Alveoli",
+          "Pleural cavity"
+        ],
         "answer": 2,
         "explanation": "Alveoli are the microscopic air sacs where oxygen and carbon dioxide diffuse between the lungs and the surrounding blood capillaries."
       },
       {
         "id": 4,
         "question": "Which cells produce pulmonary surfactant to prevent alveolar collapse?",
-        "options": ["Type I Pneumocytes", "Type II Pneumocytes", "Alveolar Macrophages", "Goblet Cells"],
+        "options": [
+          "Type I Pneumocytes",
+          "Type II Pneumocytes",
+          "Alveolar Macrophages",
+          "Goblet Cells"
+        ],
         "answer": 1,
         "explanation": "Type II alveolar cells (pneumocytes) secrete surfactant, a lipid-protein mixture that reduces surface tension in the alveoli, preventing them from collapsing during exhalation."
       },
       {
         "id": 5,
         "question": "What cartilaginous structure reinforces the trachea to keep it open?",
-        "options": ["O-shaped rings", "C-shaped rings", "S-shaped plates", "V-shaped ridges"],
+        "options": [
+          "O-shaped rings",
+          "C-shaped rings",
+          "S-shaped plates",
+          "V-shaped ridges"
+        ],
         "answer": 1,
         "explanation": "The trachea is held open by C-shaped rings of hyaline cartilage. The open part of the 'C' faces posteriorly, allowing the esophagus to expand slightly when food is swallowed."
       }
@@ -417,35 +477,60 @@
       {
         "id": 1,
         "question": "What is the primary function of the gallbladder?",
-        "options": ["Produce bile", "Store and concentrate bile", "Digest proteins", "Detoxify alcohol"],
+        "options": [
+          "Produce bile",
+          "Store and concentrate bile",
+          "Digest proteins",
+          "Detoxify alcohol"
+        ],
         "answer": 1,
         "explanation": "The gallbladder does not produce bile (the liver does). It stores and concentrates bile, releasing it into the small intestine to help digest fats."
       },
       {
         "id": 2,
         "question": "Which vessel supplies the majority of blood flow to the liver?",
-        "options": ["Hepatic artery", "Hepatic portal vein", "Celiac trunk", "Inferior vena cava"],
+        "options": [
+          "Hepatic artery",
+          "Hepatic portal vein",
+          "Celiac trunk",
+          "Inferior vena cava"
+        ],
         "answer": 1,
         "explanation": "The hepatic portal vein supplies about 75% of the liver's blood flow, delivering nutrient-rich but oxygen-poor blood directly from the digestive tract."
       },
       {
         "id": 3,
         "question": "What hormone triggers the gallbladder to contract and release bile?",
-        "options": ["Insulin", "Gastrin", "Cholecystokinin (CCK)", "Secretin"],
+        "options": [
+          "Insulin",
+          "Gastrin",
+          "Cholecystokinin (CCK)",
+          "Secretin"
+        ],
         "answer": 2,
         "explanation": "Cholecystokinin (CCK) is released by cells in the duodenum in response to fatty foods, triggering gallbladder contraction and pancreatic enzyme secretion."
       },
       {
         "id": 4,
         "question": "What is the medical term for gallstone formation?",
-        "options": ["Cholecystitis", "Cholelithiasis", "Cirrhosis", "Hepatitis"],
+        "options": [
+          "Cholecystitis",
+          "Cholelithiasis",
+          "Cirrhosis",
+          "Hepatitis"
+        ],
         "answer": 1,
         "explanation": "Cholelithiasis is the presence of gallstones, which are crystallized deposits of bile components (such as cholesterol or calcium salts) in the gallbladder."
       },
       {
         "id": 5,
         "question": "What ligament separates the left and right lobes of the liver on its anterior surface?",
-        "options": ["Coronary ligament", "Ligamentum teres", "Falciform ligament", "Hepatoduodenal ligament"],
+        "options": [
+          "Coronary ligament",
+          "Ligamentum teres",
+          "Falciform ligament",
+          "Hepatoduodenal ligament"
+        ],
         "answer": 2,
         "explanation": "The falciform ligament is a broad, thin fold of peritoneum that attaches the liver to the anterior abdominal wall and diaphragm, separating the right and left lobes."
       }
@@ -493,29 +578,412 @@
           "Drains into the inferior vena cava (IVC) via hepatic veins",
           "Processes all nutrients and toxins entering through digestion"
         ]
+      },
+      "brain": {
+        "name": "The Brain (Central Control)",
+        "category": "organ",
+        "description": "Located within the cranium, the brain serves as the primary processing hub of the nervous system, coordinating consciousness, motor commands, and homeostatic reflex loops.",
+        "function": "Governs systemic neural control, autonomic tone, sensory perception, and cognitive thought.",
+        "clinical": "Stroke, traumatic brain injury, and neurodegenerative diseases disrupt central regulation.",
+        "facts": [
+          "Consumes 20% of resting cardiac output and oxygen",
+          "Contains 86 billion interconnected neurons",
+          "Communicates with peripheral organs via the spinal cord and autonomic nerves",
+          "Protected by the blood-brain barrier and cerebrospinal fluid"
+        ]
+      },
+      "kidneys": {
+        "name": "The Kidneys (Excretion & Fluid Balance)",
+        "category": "organ",
+        "description": "Paired retroperitoneal organs flanking the vertebral column in the posterior abdomen, functioning as the primary filtration and volume-regulatory organs.",
+        "function": "Filters nitrogenous wastes, balances blood pH and electrolyte osmolarity, and modulates systemic blood pressure.",
+        "clinical": "Chronic kidney disease impairs fluid clearance, leading to hypertension and secondary cardiovascular strain.",
+        "facts": [
+          "Filters 180 liters of blood plasma daily",
+          "Produces erythropoietin (EPO) to stimulate red blood cell synthesis",
+          "Secretes renin to regulate arterial blood pressure",
+          "Operates in tandem with heart and liver in fluid-electrolyte balance"
+        ]
       }
     },
     "quiz": [
       {
         "id": 1,
-        "question": "Which organ sits directly below the diaphragm on the right side of the body?",
-        "options": ["Heart", "Right Lung", "Liver", "Spleen"],
+        "question": "Which organ consumes approximately 20% of the body's total oxygen and glucose despite accounting for only 2% of body mass?",
+        "options": [
+          "Liver",
+          "Heart",
+          "Brain",
+          "Kidneys"
+        ],
         "answer": 2,
-        "explanation": "The liver is located in the upper right quadrant of the abdomen, directly underneath the diaphragm and inferior to the right lung."
+        "explanation": "The brain represents roughly 2% of total body weight (~1.4 kg) yet consumes around 20% of resting oxygen and glucose metabolism due to constant neuronal ion pump activity."
       },
       {
         "id": 2,
-        "question": "Which clinical condition is characterized by an enlarged liver due to right-sided heart failure?",
-        "options": ["Cardiomyopathy", "Hepatomegaly (Passive Congestion)", "Cirrhosis", "Pulmonary Embolism"],
+        "question": "Which paired organs filter ~180 liters of blood plasma per day to regulate fluid balance and blood pressure?",
+        "options": [
+          "Lungs",
+          "Kidneys",
+          "Adrenal glands",
+          "Liver"
+        ],
         "answer": 1,
-        "explanation": "In right-sided heart failure, the heart cannot efficiently pump blood into the lungs. Blood backs up into the vena cava and hepatic veins, causing liver enlargement (congestive hepatomegaly)."
+        "explanation": "The kidneys filter approximately 180 liters of filtrate each day through glomerular capillary beds, reabsorbing over 99% of fluid back into systemic circulation."
       },
       {
         "id": 3,
-        "question": "Where does the oxygenated blood from the lungs flow next?",
-        "options": ["Right Atrium", "Left Atrium", "Right Ventricle", "Hepatic Portal Vein"],
+        "question": "Which clinical condition connects right heart failure directly with liver pathology?",
+        "options": [
+          "Cardiac Cirrhosis / Congestive Hepatomegaly",
+          "Pulmonary Fibrosis",
+          "Cerebral Ischemia",
+          "Ureteric Colic"
+        ],
+        "answer": 0,
+        "explanation": "Right ventricular failure elevates systemic venous pressure in the IVC and hepatic veins, causing retrograde blood congestion in hepatic sinusoids known as nutmeg liver or congestive hepatomegaly."
+      },
+      {
+        "id": 4,
+        "question": "Where does oxygen-rich blood returning from the lungs enter the heart?",
+        "options": [
+          "Right Atrium",
+          "Left Atrium",
+          "Right Ventricle",
+          "Superior Vena Cava"
+        ],
         "answer": 1,
-        "explanation": "Oxygen-rich blood exits the lungs via the pulmonary veins and enters the left atrium of the heart, from where it is pumped into the left ventricle and out to the body."
+        "explanation": "Oxygenated blood flows from the pulmonary capillary beds through the pulmonary veins directly into the left atrium of the heart."
+      },
+      {
+        "id": 5,
+        "question": "What vascular conduit delivers 75% of blood flow carrying absorbed nutrients from the gut to the liver?",
+        "options": [
+          "Hepatic Artery",
+          "Hepatic Portal Vein",
+          "Celiac Trunk",
+          "Renal Vein"
+        ],
+        "answer": 1,
+        "explanation": "The hepatic portal vein collects venous drainage from the stomach, intestines, pancreas, and spleen, delivering nutrient-rich blood straight to hepatocytes for metabolic processing."
+      }
+    ]
+  },
+  "brain": {
+    "title": "The Human Brain",
+    "description": "The human brain is the central command center of the nervous system, comprising ~86 billion neurons and over 100 trillion synapses. Consuming 20% of the body's total metabolic energy despite weighing only 1.4 kg, it governs conscious thought, emotion, memory, motor coordination, and vital autonomic homeostasis.",
+    "parts": {
+      "cerebrum": {
+        "name": "Cerebrum (Cerebral Cortex)",
+        "category": "organ",
+        "description": "The cerebrum is the largest part of the brain, divided into left and right hemispheres connected by the corpus callosum. The outer gray matter cortex is heavily folded into gyri (ridges) and sulci (grooves) to dramatically expand its surface area.",
+        "function": "Governs higher cognitive functions, conscious perception, abstract reasoning, language processing, complex memory integration, and voluntary motor planning.",
+        "clinical": "Cerebrovascular accident (ischemic or hemorrhagic stroke) in cerebral arteries can cause localized hemiparesis, aphasia, or cognitive deficits depending on the vascular territory affected.",
+        "facts": [
+          "Makes up ~85% of total brain mass",
+          "Divided into four primary lobes per hemisphere",
+          "Contains approximately 16 billion cortical neurons",
+          "Folded surface area equals ~2.5 square meters if unfolded"
+        ]
+      },
+      "frontal_lobe": {
+        "name": "Frontal Lobe",
+        "category": "chamber",
+        "description": "Positioned directly behind the forehead, the frontal lobe is the largest lobe of the cerebral cortex. It houses the prefrontal cortex, the primary motor cortex (precentral gyrus), and Broca's speech area in the dominant hemisphere.",
+        "function": "Controls executive functioning (decision making, impulse control, working memory), personality expression, voluntary movement initiation, and motor articulation of speech.",
+        "clinical": "Frontotemporal dementia (FTD) presents with pronounced personality changes and behavioral disinhibition. Damage to Broca's area leads to expressive (non-fluent) aphasia.",
+        "facts": [
+          "Last region of the human brain to fully mature (~age 25)",
+          "Houses Broca's area for expressive speech production",
+          "Prefrontal cortex is the seat of executive decision making",
+          "Primary motor strip maps the body via the motor homunculus"
+        ]
+      },
+      "parietal_lobe": {
+        "name": "Parietal Lobe",
+        "category": "chamber",
+        "description": "Located superiorly between the frontal and occipital lobes, posterior to the central sulcus. Contains the primary somatosensory cortex (postcentral gyrus) and association areas.",
+        "function": "Processes sensory modalities including touch, temperature, nociception (pain), proprioception, and constructs three-dimensional spatial orientation and somatic body schema.",
+        "clinical": "Lesions in the non-dominant (usually right) parietal lobe frequently cause contralateral hemispatial neglect, where patients fail to perceive stimuli on the left side of space.",
+        "facts": [
+          "Contains the somatosensory homunculus for tactile mapping",
+          "Integrates multisensory data to form spatial awareness",
+          "Gerstmann syndrome results from dominant angular gyrus lesions",
+          "Crucial for mathematical calculations and body schema"
+        ]
+      },
+      "temporal_lobe": {
+        "name": "Temporal Lobe",
+        "category": "chamber",
+        "description": "Situated inferior to the lateral fissure on both hemispheres, adjacent to the temples. Houses the primary auditory cortex, Wernicke's speech comprehension area, and the medial hippocampus.",
+        "function": "Processes auditory signals, decodes receptive speech, interprets complex visual memories (faces, objects), and facilitates long-term declarative memory encoding via the hippocampus.",
+        "clinical": "Damage to Wernicke's area in the dominant temporal lobe results in receptive (fluent) aphasia. Medial temporal lobe sclerosis is the most common cause of intractable temporal lobe epilepsy.",
+        "facts": [
+          "Houses the hippocampus, essential for memory consolidation",
+          "Contains Wernicke's area for receptive language comprehension",
+          "Processes auditory frequency mapping (tonotopy)",
+          "Fusiform face area enables facial recognition"
+        ]
+      },
+      "occipital_lobe": {
+        "name": "Occipital Lobe",
+        "category": "chamber",
+        "description": "The smallest of the four lobes, situated at the posterior pole of the cerebrum beneath the parieto-occipital sulcus. Contains the primary visual cortex (Brodmann area 17/V1) surrounding the calcarine sulcus.",
+        "function": "Processes all visual input received from the retina via the optic radiations, resolving edges, orientation, color, depth perception, spatial frequency, and visual motion.",
+        "clinical": "Posterior cerebral artery (PCA) stroke leads to contralateral homonymous hemianopia, often with macular sparing due to collateral blood supply from the middle cerebral artery.",
+        "facts": [
+          "Primary destination for retina signals via the optic tract",
+          "Calcarine sulcus organizes retinotopic visual field maps",
+          "Visual processing splits into 'where' dorsal and 'what' ventral streams",
+          "Damage can produce cortical blindness without retinal pathology"
+        ]
+      },
+      "cerebellum": {
+        "name": "Cerebellum ('Little Brain')",
+        "category": "organ",
+        "description": "A compact structure tucked beneath the occipital lobes at the posterior cranial fossa. Despite making up only 10% of brain volume, it contains over 50% of all neurons in the entire central nervous system.",
+        "function": "Coordinates voluntary motor movements, refines motor timing, maintains equilibrium and posture, and mediates motor error correction and muscle memory learning.",
+        "clinical": "Cerebellar ataxia manifests as intention tremor, dysmetria (past-pointing), dysdiadochokinesia (impaired rapid alternating movements), and wide-based drunken gait.",
+        "facts": [
+          "Contains more than half of the total neurons in the brain",
+          "Purkinje cells have the most elaborate dendritic arbors in biology",
+          "Does not initiate movement, but modulates and refines precision",
+          "Connected to brainstem by superior, middle, and inferior peduncles"
+        ]
+      },
+      "brainstem": {
+        "name": "Brainstem (Midbrain, Pons & Medulla)",
+        "category": "vessel",
+        "description": "The stalk-like structure connecting the cerebral hemispheres to the spinal cord. Composed of three contiguous segments: midbrain (mesencephalon), pons, and medulla oblongata.",
+        "function": "Regulates essential autonomic life-support reflexes (respiratory drive, cardiac rhythm, arterial blood pressure, swallowing, vomiting) and houses cranial nerve nuclei III through XII.",
+        "clinical": "Brainstem strokes or herniation (e.g. uncal or tonsillar herniation) can rapidly cause coma, decerebrate posturing, respiratory arrest, and brain death.",
+        "facts": [
+          "Continuous with the spinal cord at the foramen magnum",
+          "Contains the reticular activating system (RAS) controlling consciousness",
+          "Houses the cardiorespiratory control centers in the medulla",
+          "Origin of 10 of the 12 pairs of cranial nerves"
+        ]
+      }
+    },
+    "quiz": [
+      {
+        "id": 1,
+        "question": "Which brain structure contains over 50% of the brain's total neurons despite accounting for only 10% of its volume?",
+        "options": [
+          "Frontal Lobe",
+          "Cerebellum",
+          "Brainstem",
+          "Thalamus"
+        ],
+        "answer": 1,
+        "explanation": "The cerebellum contains an extraordinary density of granule and Purkinje neurons, packing more than half of all neurons in the brain into just 10% of its volume."
+      },
+      {
+        "id": 2,
+        "question": "What speech disorder is characterized by impaired fluency but intact comprehension, typically caused by lesions in the left inferior frontal gyrus?",
+        "options": [
+          "Wernicke's Aphasia",
+          "Broca's Aphasia",
+          "Global Aphasia",
+          "Conduction Aphasia"
+        ],
+        "answer": 1,
+        "explanation": "Broca's aphasia (expressive aphasia) occurs when Broca's area in the frontal lobe is injured. Patients understand language well but struggle to articulate grammatically coherent speech."
+      },
+      {
+        "id": 3,
+        "question": "Which vital brainstem region houses the autonomic centers that regulate heart rate, blood pressure, and respiratory rhythm?",
+        "options": [
+          "Medulla Oblongata",
+          "Hypothalamus",
+          "Hippocampus",
+          "Cerebellar cortex"
+        ],
+        "answer": 0,
+        "explanation": "The medulla oblongata at the base of the brainstem contains the medullary respiratory center and cardiovascular control centers regulating resting heart rate and arterial pressure."
+      },
+      {
+        "id": 4,
+        "question": "Where is the primary visual cortex (Brodmann area 17) anatomically located?",
+        "options": [
+          "Frontal Pole",
+          "Superior Temporal Gyrus",
+          "Occipital Lobe along the Calcarine Sulcus",
+          "Postcentral Gyrus"
+        ],
+        "answer": 2,
+        "explanation": "The primary visual cortex resides in the occipital lobe bordering the calcarine fissure, receiving retinotopic visual inputs from the lateral geniculate nucleus."
+      },
+      {
+        "id": 5,
+        "question": "Which lobe is primarily responsible for processing tactile sensations, proprioception, and constructing spatial orientation?",
+        "options": [
+          "Temporal Lobe",
+          "Parietal Lobe",
+          "Frontal Lobe",
+          "Insular Cortex"
+        ],
+        "answer": 1,
+        "explanation": "The parietal lobe contains the primary somatosensory cortex and multisensory association regions that integrate touch, temperature, position sense, and 3D space."
+      }
+    ]
+  },
+  "kidneys": {
+    "title": "The Kidneys & Renal System",
+    "description": "The human kidneys are bean-shaped retroperitoneal organs located along the posterior abdominal wall on either side of the vertebral column (T12–L3). Receiving roughly 20-25% of total cardiac output, they filter 180 liters of blood per day to excrete metabolic wastes, stabilize extracellular fluid volume, regulate blood pressure via the RAAS axis, and stimulate erythropoiesis.",
+    "parts": {
+      "renal_cortex": {
+        "name": "Renal Cortex",
+        "category": "organ",
+        "description": "The pale, granular outer layer of the kidney extending from the renal capsule inward between the medullary pyramids as the renal columns of Bertin.",
+        "function": "Houses approximately 1 million nephrons, containing all renal corpuscles (Bowman's capsules and glomeruli), proximal convoluted tubules, and distal convoluted tubules for ultrafiltration.",
+        "clinical": "Glomerulonephritis is an inflammatory disease affecting glomerular filtration barriers in the cortex, manifesting with hematuria, proteinuria, and acute renal failure.",
+        "facts": [
+          "Receives ~85-90% of total renal blood flow",
+          "Contains all the glomeruli and Bowman's capsules",
+          "Extends columns between pyramids (columns of Bertin)",
+          "Primary site of ultrafiltration and tubular reabsorption"
+        ]
+      },
+      "renal_medulla": {
+        "name": "Renal Medulla & Pyramids",
+        "category": "organ",
+        "description": "The inner, darker striated zone of the kidney divided into 8 to 18 conical renal pyramids. The bases face the cortex while the apices (renal papillae) point toward the renal sinus.",
+        "function": "Houses the long loops of Henle and medullary collecting ducts. Generates a steep hyperosmotic corticomedullary concentration gradient essential for water reabsorption under vasopressin (ADH).",
+        "clinical": "Renal papillary necrosis can occur in sickle cell disease, severe diabetes mellitus, or chronic analgesic abuse, leading to sloughed papillae causing ureteral obstruction.",
+        "facts": [
+          "Composed of 8 to 18 striated renal pyramids",
+          "Features hypertonic interstitium reaching up to 1200 mOsm/L",
+          "Crucial for urine concentration via the countercurrent multiplier",
+          "Papillae drain directly into minor calyces"
+        ]
+      },
+      "renal_pelvis": {
+        "name": "Renal Pelvis & Calyces",
+        "category": "chamber",
+        "description": "A wide, funnel-shaped sac in the renal sinus that receives urine from 2 to 3 major calyces (which in turn drain 7 to 13 minor calyces). It tapers inferiorly at the ureteropelvic junction (UPJ).",
+        "function": "Acts as a primary collection funnel channeling filtered urine from the calyces into the ureter for expulsion into the urinary bladder.",
+        "clinical": "Ureteropelvic junction (UPJ) obstruction causes hydronephrosis (swelling of the renal pelvis and calyces) that can permanently damage renal parenchyma if untreated.",
+        "facts": [
+          "Funnel-shaped conduit within the renal sinus",
+          "Formed by the convergence of major calyces",
+          "Smooth muscle in pelvis walls exhibits peristaltic contractions",
+          "Susceptible to renal calculus (kidney stone) impaction"
+        ]
+      },
+      "renal_artery": {
+        "name": "Renal Artery",
+        "category": "vessel",
+        "description": "Large paired blood vessels that branch laterally off the abdominal aorta below the superior mesenteric artery. The right renal artery is longer and passes posterior to the IVC.",
+        "function": "Delivers approximately 1 to 1.2 litres of blood per minute (~20-25% of resting cardiac output) directly into the kidneys for filtration, nutrient supply, and gas exchange.",
+        "clinical": "Renal artery stenosis (caused by atherosclerosis or fibromuscular dysplasia) diminishes perfusion, triggering excessive renin release and renovascular hypertension.",
+        "facts": [
+          "Right renal artery is longer than the left and passes behind the IVC",
+          "Carries ~20-25% of cardiac output directly to kidneys",
+          "Divides into anterior and posterior segmental branches at the hilum",
+          "Features no significant anastomoses between segmental branches"
+        ]
+      },
+      "renal_vein": {
+        "name": "Renal Vein",
+        "category": "vessel",
+        "description": "Short, wide veins that drain purified venous blood from the kidneys directly into the inferior vena cava. The left renal vein is longer and crosses the aorta beneath the superior mesenteric artery.",
+        "function": "Carries filtered, deoxygenated blood devoid of metabolic wastes back into the systemic venous circulation for return to the right atrium.",
+        "clinical": "Nutcracker syndrome occurs when the left renal vein is compressed between the abdominal aorta and SMA, causing left flank pain, pelvic congestion, and hematuria.",
+        "facts": [
+          "Left renal vein is 3× longer than right and crosses anterior to the aorta",
+          "Left gonadal and left suprarenal veins drain into the left renal vein",
+          "Drains into the inferior vena cava (IVC)",
+          "Compression causes Nutcracker syndrome"
+        ]
+      },
+      "ureter": {
+        "name": "Ureter",
+        "category": "vessel",
+        "description": "A muscular duct (~25-30 cm in length) running retroperitoneally down the posterior abdominal wall from the renal pelvis into the posterior wall of the urinary bladder.",
+        "function": "Transports concentrated urine from the renal pelvis to the urinary bladder via rhythmic, myogenic peristaltic contractions of its smooth muscle muscularis layer.",
+        "clinical": "Nephrolithiasis (kidney stones) migrating down the ureter often lodge at three anatomical narrowings (UPJ, pelvic brim, and UVJ), causing excruciating ureteric colic pain.",
+        "facts": [
+          "Propels urine via smooth muscle peristalsis, not gravity alone",
+          "Has three physiological narrowings prone to stone impaction",
+          "Enters bladder obliquely to create a one-way physiological anti-reflux valve",
+          "Lined by specialized transitional epithelium (urothelium)"
+        ]
+      },
+      "adrenal_gland": {
+        "name": "Adrenal Gland (Suprarenal)",
+        "category": "organ",
+        "description": "Triangular endocrine gland capping the superior pole of each kidney, enveloped within renal fascia. Comprises an outer steroid-producing cortex and an inner catecholamine-secreting medulla.",
+        "function": "Secretes mineralocorticoids (aldosterone), glucocorticoids (cortisol), androgens, and sympathetic catecholamines (epinephrine, norepinephrine) into systemic circulation.",
+        "clinical": "Addison's disease causes adrenal cortex insufficiency, while Cushing's syndrome results from hypercortisolemia. Pheochromocytoma is a tumor of the adrenal medulla causing hypertensive crises.",
+        "facts": [
+          "Right gland is pyramidal; left gland is semilunar and slightly larger",
+          "Cortex derived from mesoderm; medulla derived from neural crest",
+          "Medulla acts essentially as a modified sympathetic ganglion",
+          "Essential for salt retention, glucose regulation, and fight-or-flight response"
+        ]
+      }
+    },
+    "quiz": [
+      {
+        "id": 1,
+        "question": "Approximately what percentage of resting cardiac output is delivered to the kidneys via the renal arteries?",
+        "options": [
+          "5-10%",
+          "10-15%",
+          "20-25%",
+          "35-40%"
+        ],
+        "answer": 2,
+        "explanation": "The kidneys receive approximately 20-25% of the total resting cardiac output (~1.2 L/min), reflecting their tremendous filtration workload."
+      },
+      {
+        "id": 2,
+        "question": "Which anatomical layer of the kidney contains all the renal corpuscles (glomeruli and Bowman's capsules)?",
+        "options": [
+          "Renal Medulla",
+          "Renal Cortex",
+          "Renal Pelvis",
+          "Minor Calyces"
+        ],
+        "answer": 1,
+        "explanation": "All glomeruli and initial ultrafiltration filtration barriers reside within the outer renal cortex and renal columns."
+      },
+      {
+        "id": 3,
+        "question": "What hormone produced by the adrenal cortex regulates sodium retention and potassium excretion in the distal tubules?",
+        "options": [
+          "Cortisol",
+          "Aldosterone",
+          "Epinephrine",
+          "Erythropoietin"
+        ],
+        "answer": 1,
+        "explanation": "Aldosterone, a mineralocorticoid secreted by the adrenal zona glomerulosa, acts on distal nephron collecting tubules to promote sodium reabsorption and potassium excretion."
+      },
+      {
+        "id": 4,
+        "question": "By what mechanism is urine propelled through the ureters from the kidneys to the bladder?",
+        "options": [
+          "Gravitational free-fall",
+          "Active smooth muscle peristalsis",
+          "Negative hydrostatic suction",
+          "Arterial pulsations"
+        ],
+        "answer": 1,
+        "explanation": "The smooth muscular coat of the ureters generates rhythmic waves of peristalsis (2-6 per minute) that actively propel urine droplets into the bladder, functioning even when lying flat or upside down."
+      },
+      {
+        "id": 5,
+        "question": "Compression of the left renal vein between the abdominal aorta and superior mesenteric artery is known clinically as:",
+        "options": [
+          "Budd-Chiari syndrome",
+          "Nutcracker syndrome",
+          "May-Thurner syndrome",
+          "Thoracic outlet syndrome"
+        ],
+        "answer": 1,
+        "explanation": "Nutcracker syndrome is the anterior entrapment of the left renal vein between the abdominal aorta and SMA, often presenting with left flank pain, pelvic congestion, and hematuria."
       }
     ]
   }

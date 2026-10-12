@@ -1,6 +1,8 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
 import Scene from '../components/Viewer/Scene'
 import anatomyData from '../data/anatomyData.json'
+import { soundEngine } from '../services/soundEngine'
+import { getStats } from '../services/api'
 
 /* ─────────────────────────────────────────────
    INFO PANEL — Right side anatomy details
@@ -20,7 +22,7 @@ function InfoPanel({ selectedPart, onClose, onStartQuiz, activeOrgan }) {
           <span className="category-badge">{partInfo.category}</span>
           <h2 className="panel-title">{partInfo.name}</h2>
         </div>
-        <button className="close-btn" onClick={onClose}>×</button>
+        <button className="close-btn" onClick={onClose} aria-label="Close panel">×</button>
       </div>
 
       <div className="tab-row">
@@ -43,7 +45,7 @@ function InfoPanel({ selectedPart, onClose, onStartQuiz, activeOrgan }) {
               <p className="section-text">{partInfo.description}</p>
             </div>
             <div className="info-section">
-              <h3 className="section-label">Function</h3>
+              <h3 className="section-label">Physiological Function</h3>
               <p className="section-text accent">{partInfo.function}</p>
             </div>
           </>
@@ -51,14 +53,14 @@ function InfoPanel({ selectedPart, onClose, onStartQuiz, activeOrgan }) {
 
         {activeTab === 'clinical' && (
           <div className="info-section">
-            <h3 className="section-label">Clinical Significance</h3>
+            <h3 className="section-label">Clinical Significance & Pathology</h3>
             <p className="section-text">{partInfo.clinical}</p>
           </div>
         )}
 
         {activeTab === 'facts' && (
           <div className="info-section">
-            <h3 className="section-label">Key Facts</h3>
+            <h3 className="section-label">Key Anatomical Facts</h3>
             <ul className="facts-list">
               {partInfo.facts.map((fact, i) => (
                 <li key={i}>{fact}</li>
@@ -91,7 +93,8 @@ function SearchPanel({ onSelectResult, activeOrgan }) {
     ? allParts.filter(
         p =>
           p.name.toLowerCase().includes(query.toLowerCase()) ||
-          p.description.toLowerCase().includes(query.toLowerCase())
+          p.description.toLowerCase().includes(query.toLowerCase()) ||
+          (p.category && p.category.toLowerCase().includes(query.toLowerCase()))
       )
     : []
 
@@ -119,7 +122,12 @@ function SearchPanel({ onSelectResult, activeOrgan }) {
             <div
               key={r.id}
               className="search-result-item"
-              onClick={() => { onSelectResult(r.id); setQuery(''); setOpen(false) }}
+              onClick={() => {
+                onSelectResult(r.id)
+                soundEngine.playClick()
+                setQuery('')
+                setOpen(false)
+              }}
             >
               <span className="result-name">{r.name}</span>
               <span className="result-category">{r.category}</span>
@@ -143,15 +151,15 @@ function PartsList({ selectedPart, onSelectPart, activeOrgan }) {
   })
 
   const categoryLabels = {
-    organ: '🧬 Organs',
-    chamber: '🫀 Chambers',
-    vessel: '🩸 Vessels & Airways',
-    valve: '🔒 Valves & Alveoli'
+    organ: '🧬 Major Organs & Lobes',
+    chamber: '🫀 Chambers & Cortices',
+    vessel: '🩸 Great Vessels & Ducts',
+    valve: '🔒 Valves, Calyces & Alveoli'
   }
 
   return (
     <div className="glass-panel parts-panel">
-      <h3 className="panel-small-title">Structures</h3>
+      <h3 className="panel-small-title">Anatomical Structures</h3>
       {Object.entries(categories).map(([cat, parts]) => (
         <div key={cat} className="category-group">
           <div className="category-label">{categoryLabels[cat] || cat}</div>
@@ -159,7 +167,10 @@ function PartsList({ selectedPart, onSelectPart, activeOrgan }) {
             <button
               key={p.id}
               className={`part-btn ${selectedPart === p.id ? 'active' : ''}`}
-              onClick={() => onSelectPart(p.id)}
+              onClick={() => {
+                onSelectPart(p.id)
+                soundEngine.playClick()
+              }}
             >
               {p.name}
             </button>
@@ -178,7 +189,6 @@ function CrossSectionPanel({ clipEnabled, setClipEnabled, clipPosition, setClipP
 
   return (
     <div className="glass-panel cross-section-panel">
-      {/* Header with toggle */}
       <div className="cs-header">
         <div className="cs-title-group">
           <svg className="cs-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" width="18" height="18">
@@ -195,11 +205,9 @@ function CrossSectionPanel({ clipEnabled, setClipEnabled, clipPosition, setClipP
         </button>
       </div>
 
-      {/* Controls — visible when enabled */}
       <div className={`cs-controls ${clipEnabled ? 'visible' : ''}`}>
-        {/* Axis selector */}
         <div className="cs-section">
-          <label className="cs-label">Slice Plane</label>
+          <label className="cs-label">Anatomical Plane</label>
           <div className="cs-axis-row">
             {['x', 'y', 'z'].map(axis => (
               <button
@@ -214,10 +222,9 @@ function CrossSectionPanel({ clipEnabled, setClipEnabled, clipPosition, setClipP
           </div>
         </div>
 
-        {/* Position slider */}
         <div className="cs-section">
           <div className="cs-slider-header">
-            <label className="cs-label">Slice Position</label>
+            <label className="cs-label">Slice Depth</label>
             <span className="cs-value">{Math.round(((clipPosition + 1) / 2) * 100)}%</span>
           </div>
           <div className="cs-slider-wrap">
@@ -237,13 +244,12 @@ function CrossSectionPanel({ clipEnabled, setClipEnabled, clipPosition, setClipP
           </div>
         </div>
 
-        {/* Hint */}
         <div className="cs-hint">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="13" height="13">
             <circle cx="12" cy="12" r="10" />
             <path d="M12 16v-4M12 8h.01" />
           </svg>
-          <span>Drag the slider to slice through the heart and reveal internal structures</span>
+          <span>Slice through tissue layers to reveal internal cavities and morphology</span>
         </div>
       </div>
     </div>
@@ -251,7 +257,7 @@ function CrossSectionPanel({ clipEnabled, setClipEnabled, clipPosition, setClipP
 }
 
 /* ─────────────────────────────────────────────
-   QUIZ MODULE — Bottom overlay quiz
+   QUIZ MODULE — Interactive clinical review
    ───────────────────────────────────────────── */
 function QuizModule({ onClose, activeOrgan }) {
   const questions = anatomyData[activeOrgan]?.quiz || []
@@ -291,9 +297,9 @@ function QuizModule({ onClose, activeOrgan }) {
   if (finished) {
     const pct = Math.round((score / questions.length) * 100)
     let emoji = '🎉'
-    let msg = 'Outstanding!'
-    if (pct < 50) { emoji = '📚'; msg = 'Keep studying!' }
-    else if (pct < 80) { emoji = '👍'; msg = 'Good job!' }
+    let msg = 'Outstanding Mastery!'
+    if (pct < 50) { emoji = '📚'; msg = 'Needs Review' }
+    else if (pct < 80) { emoji = '👍'; msg = 'Solid Foundation!' }
 
     return (
       <div className="quiz-overlay">
@@ -305,7 +311,7 @@ function QuizModule({ onClose, activeOrgan }) {
             <span className="quiz-score-pct">{pct}%</span>
           </div>
           <div className="quiz-actions">
-            <button className="cta-btn" onClick={handleRestart}>Try Again</button>
+            <button className="cta-btn" onClick={handleRestart}>Retake Quiz</button>
             <button className="cta-btn secondary" onClick={onClose}>Close</button>
           </div>
         </div>
@@ -345,9 +351,83 @@ function QuizModule({ onClose, activeOrgan }) {
           <div className="quiz-explanation">
             <p>{q.explanation}</p>
             <button className="cta-btn" onClick={handleNext}>
-              {current + 1 >= questions.length ? 'See Results' : 'Next Question →'}
+              {current + 1 >= questions.length ? 'View Performance' : 'Next Question →'}
             </button>
           </div>
+        )}
+      </div>
+    </div>
+  )
+}
+
+/* ─────────────────────────────────────────────
+   SHORTCUTS MODAL
+   ───────────────────────────────────────────── */
+function ShortcutsModal({ onClose }) {
+  const shortcuts = [
+    { key: 'Space', desc: 'Toggle auto-rotation' },
+    { key: 'M', desc: 'Toggle cardiac/respiratory sound' },
+    { key: 'X', desc: 'Toggle cross-section slice' },
+    { key: '1 - 6', desc: 'Quick switch organ systems' },
+    { key: 'P', desc: 'Toggle animation pause/play' },
+    { key: 'Esc', desc: 'Deselect structure / Close modal' },
+    { key: '?', desc: 'Open keyboard guide' }
+  ]
+
+  return (
+    <div className="quiz-overlay" onClick={onClose}>
+      <div className="glass-panel modal-panel" onClick={e => e.stopPropagation()}>
+        <div className="panel-header">
+          <h2 className="panel-title">⌨️ Keyboard Shortcuts</h2>
+          <button className="close-btn" onClick={onClose}>×</button>
+        </div>
+        <div className="shortcuts-list">
+          {shortcuts.map((s, i) => (
+            <div key={i} className="shortcut-row">
+              <kbd className="shortcut-key">{s.key}</kbd>
+              <span className="shortcut-desc">{s.desc}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  )
+}
+
+/* ─────────────────────────────────────────────
+   STATS MODAL
+   ───────────────────────────────────────────── */
+function StatsModal({ onClose }) {
+  const [stats, setStats] = useState(null)
+
+  useEffect(() => {
+    getStats().then(setStats)
+  }, [])
+
+  return (
+    <div className="quiz-overlay" onClick={onClose}>
+      <div className="glass-panel modal-panel" onClick={e => e.stopPropagation()}>
+        <div className="panel-header">
+          <h2 className="panel-title">📊 Anatomical Atlas Scope</h2>
+          <button className="close-btn" onClick={onClose}>×</button>
+        </div>
+        {stats ? (
+          <div className="stats-grid">
+            <div className="stat-card">
+              <span className="stat-number">{stats.totalOrgans}</span>
+              <span className="stat-label">Organ Systems</span>
+            </div>
+            <div className="stat-card">
+              <span className="stat-number">{stats.totalStructures}</span>
+              <span className="stat-label">Mapped Structures</span>
+            </div>
+            <div className="stat-card">
+              <span className="stat-number">{stats.totalQuestions}</span>
+              <span className="stat-label">Board-Style Questions</span>
+            </div>
+          </div>
+        ) : (
+          <p style={{ color: '#94a3b8' }}>Loading atlas metadata...</p>
         )}
       </div>
     </div>
@@ -358,28 +438,70 @@ function QuizModule({ onClose, activeOrgan }) {
    MAIN VIEWER PAGE
    ───────────────────────────────────────────── */
 const ORGAN_BANNERS = {
-  heart: { icon: '🫀', title: 'Human Heart', desc: 'Muscular organ pumping ~2,000 gallons of blood daily through 60,000 miles of vessels' },
-  lungs: { icon: '🫁', title: 'Respiratory System', desc: 'Two spongy organs facilitating gas exchange across 70m² of alveolar surface area' },
-  liver: { icon: '🧬', title: 'Liver', desc: 'Largest internal organ performing 500+ vital functions including detoxification & bile production' },
-  all:   { icon: '🧍', title: 'Thoracic & Abdominal Organs', desc: 'Combined view — heart, lungs, and liver in anatomical position' }
+  heart: {
+    icon: '🫀',
+    title: 'The Human Heart',
+    desc: 'Muscular pump generating ~100,000 beats daily to circulate 7,500L of blood through 60,000 miles of vessels'
+  },
+  lungs: {
+    icon: '🫁',
+    title: 'Respiratory System',
+    desc: 'Bilateral gas exchange organs presenting 70–100 m² of alveolar diffusion membrane surface area'
+  },
+  liver: {
+    icon: '🧬',
+    title: 'The Liver & Biliary System',
+    desc: 'Massive metabolic laboratory performing 500+ vital functions with dual arterial and portal venous inflow'
+  },
+  brain: {
+    icon: '🧠',
+    title: 'The Human Brain',
+    desc: 'Central neurological command containing 86B neurons and 100T synapses consuming 20% of basal metabolic rate'
+  },
+  kidneys: {
+    icon: '🫘',
+    title: 'Renal & Excretory System',
+    desc: 'Retroperitoneal filtration organs processing 180L of plasma daily to maintain fluid-electrolyte homeostasis'
+  }
 }
 
 export default function ViewerPage() {
   const [selectedPart, setSelectedPart] = useState(null)
   const [quizOpen, setQuizOpen] = useState(false)
+  const [shortcutsOpen, setShortcutsOpen] = useState(false)
+  const [statsOpen, setStatsOpen] = useState(false)
   const [activeOrgan, setActiveOrgan] = useState('heart')
+
+  // Visual mode: 'standard' | 'xray' | 'wireframe'
+  const [visualMode, setVisualMode] = useState('standard')
+
+  // Camera preset trigger
+  const [viewPreset, setViewPreset] = useState('anterior')
+
+  // Cardiac BPM & animation
+  const [bpm, setBpm] = useState(72)
+  const [isAnimating, setIsAnimating] = useState(true)
+  const [autoRotate, setAutoRotate] = useState(true)
+
+  // Sound state
+  const [soundEnabled, setSoundEnabled] = useState(false)
 
   // Cross-section state
   const [clipEnabled, setClipEnabled] = useState(false)
   const [clipPosition, setClipPosition] = useState(0)
   const [clipAxis, setClipAxis] = useState('x')
 
-  // Screen-space projected labels — stored in ref to avoid re-renders each frame
+  // Mobile sidebar collapse
+  const [leftDrawerOpen, setLeftDrawerOpen] = useState(true)
+
+  // Scene ref for screenshot
+  const sceneRef = useRef(null)
+
+  // Screen-space projected labels
   const [projectedLabels, setProjectedLabels] = useState({})
   const labelsRef = useRef({})
   const rafId = useRef(null)
 
-  // Throttle projected label updates to ~30fps to avoid excessive React re-renders
   const handleProjectedLabels = useCallback((labels) => {
     labelsRef.current = labels
     if (!rafId.current) {
@@ -403,7 +525,62 @@ export default function ViewerPage() {
   const handleOrganChange = useCallback((organId) => {
     setActiveOrgan(organId)
     setSelectedPart(null)
+    soundEngine.setOrgan(organId)
   }, [])
+
+  const handleToggleSound = useCallback(() => {
+    const next = soundEngine.toggle()
+    setSoundEnabled(next)
+  }, [])
+
+  const handleBpmChange = useCallback((newBpm) => {
+    setBpm(newBpm)
+    soundEngine.setBpm(newBpm)
+  }, [])
+
+  const handleCaptureScreenshot = useCallback(() => {
+    if (sceneRef.current) {
+      const dataUrl = sceneRef.current.captureScreenshot()
+      if (dataUrl) {
+        const link = document.createElement('a')
+        link.download = `BioAnimations-${activeOrgan}-${Date.now()}.png`
+        link.href = dataUrl
+        link.click()
+      }
+    }
+  }, [activeOrgan])
+
+  // Keyboard shortcut listener
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.target.tagName === 'INPUT') return
+
+      if (e.code === 'Space') {
+        e.preventDefault()
+        setAutoRotate(r => !r)
+      } else if (e.key === 'm' || e.key === 'M') {
+        handleToggleSound()
+      } else if (e.key === 'x' || e.key === 'X') {
+        setClipEnabled(c => !c)
+      } else if (e.key === 'p' || e.key === 'P') {
+        setIsAnimating(a => !a)
+      } else if (e.key === 'Escape') {
+        setSelectedPart(null)
+        setQuizOpen(false)
+        setShortcutsOpen(false)
+        setStatsOpen(false)
+      } else if (e.key === '?') {
+        setShortcutsOpen(s => !s)
+      } else if (e.key === '1') handleOrganChange('heart')
+      else if (e.key === '2') handleOrganChange('lungs')
+      else if (e.key === '3') handleOrganChange('liver')
+      else if (e.key === '4') handleOrganChange('brain')
+      else if (e.key === '5') handleOrganChange('kidneys')
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [handleToggleSound, handleOrganChange])
 
   const banner = ORGAN_BANNERS[activeOrgan]
 
@@ -412,15 +589,21 @@ export default function ViewerPage() {
       {/* ── Top Bar ── */}
       <header className="top-bar">
         <div className="logo-group">
-          <span className="logo-icon">🫀</span>
-          <h1 className="logo-text">MedAtlas3D</h1>
+          <span className="logo-icon">🧬</span>
+          <div>
+            <h1 className="logo-text">Bio animations</h1>
+            <span className="logo-subtitle">Interactive 3D Anatomy</span>
+          </div>
         </div>
+
+        {/* Organ Selector Tabs */}
         <nav className="organ-tabs">
           {[
             { id: 'heart', label: '🫀 Heart' },
             { id: 'lungs', label: '🫁 Lungs' },
             { id: 'liver', label: '🧬 Liver' },
-            { id: 'all', label: '🧍 All Organs' }
+            { id: 'brain', label: '🧠 Brain' },
+            { id: 'kidneys', label: '🫘 Kidneys' }
           ].map(tab => (
             <button
               key={tab.id}
@@ -431,10 +614,63 @@ export default function ViewerPage() {
             </button>
           ))}
         </nav>
+
+        {/* Utility Buttons */}
+        <div className="top-utils">
+          <button
+            className={`util-btn sound-btn ${soundEnabled ? 'active' : ''}`}
+            onClick={handleToggleSound}
+            title={soundEnabled ? 'Mute Audio (M)' : 'Play Physiological Audio (M)'}
+          >
+            {soundEnabled ? (
+              <>
+                <span className="sound-wave" />
+                <span className="sound-wave" />
+                <span className="sound-wave" />
+                <span>Audio ON</span>
+              </>
+            ) : (
+              <span>🔇 Audio</span>
+            )}
+          </button>
+
+          <button
+            className="util-btn"
+            onClick={handleCaptureScreenshot}
+            title="Download HD Snapshot"
+          >
+            📸 Snapshot
+          </button>
+
+          <button
+            className="util-btn icon-only"
+            onClick={() => setStatsOpen(true)}
+            title="Atlas Statistics"
+          >
+            📊
+          </button>
+
+          <button
+            className="util-btn icon-only"
+            onClick={() => setShortcutsOpen(true)}
+            title="Keyboard Shortcuts (?)"
+          >
+            ⌨️
+          </button>
+        </div>
       </header>
 
+      {/* ── Left Column Drawer Toggle (Mobile) ── */}
+      <button
+        className={`drawer-toggle-btn ${leftDrawerOpen ? 'open' : ''}`}
+        onClick={() => setLeftDrawerOpen(!leftDrawerOpen)}
+        title="Toggle Structures Drawer"
+      >
+        {leftDrawerOpen ? '◀' : '▶'}
+      </button>
+
       {/* ── Left Column ── */}
-      <aside className="left-column">
+      <aside className={`left-column ${leftDrawerOpen ? 'open' : 'closed'}`}>
         <SearchPanel onSelectResult={handleSelectPart} activeOrgan={activeOrgan} />
         <PartsList selectedPart={selectedPart} onSelectPart={handleSelectPart} activeOrgan={activeOrgan} />
         <CrossSectionPanel
@@ -449,12 +685,18 @@ export default function ViewerPage() {
 
       {/* ── 3D Canvas ── */}
       <Scene
+        ref={sceneRef}
         onSelectPart={handleSelectPart}
         selectedPart={selectedPart}
         clipEnabled={clipEnabled}
         clipPosition={clipPosition}
         clipAxis={clipAxis}
         activeOrgan={activeOrgan}
+        visualMode={visualMode}
+        viewPreset={viewPreset}
+        bpm={bpm}
+        isAnimating={isAnimating}
+        autoRotate={autoRotate}
         onProjectedLabels={handleProjectedLabels}
       />
 
@@ -463,7 +705,6 @@ export default function ViewerPage() {
         {Object.entries(projectedLabels).map(([id, data]) => {
           if (data.behind) return null
           const isSelected = selectedPart === id
-          const showLabel = isSelected
 
           return (
             <div
@@ -473,10 +714,13 @@ export default function ViewerPage() {
                 left: `${data.x}px`,
                 top: `${data.y}px`,
               }}
-              onClick={() => handleSelectPart(id)}
+              onClick={() => {
+                handleSelectPart(id)
+                soundEngine.playClick()
+              }}
             >
               <div className="screen-label-dot" />
-              {showLabel && (
+              {isSelected && (
                 <div className="screen-label-tag">
                   <div className="screen-label-connector" />
                   <div className="screen-label-text">{data.label}</div>
@@ -485,6 +729,101 @@ export default function ViewerPage() {
             </div>
           )
         })}
+      </div>
+
+      {/* ── Viewport Floating Toolbars ── */}
+      <div className="viewport-floating-bar top-center">
+        {/* View Presets Toolbar */}
+        <div className="glass-pill-bar">
+          {[
+            { id: 'anterior', label: 'Anterior' },
+            { id: 'posterior', label: 'Posterior' },
+            { id: 'left', label: 'Left' },
+            { id: 'right', label: 'Right' },
+            { id: 'superior', label: 'Superior' },
+            { id: 'isometric', label: 'Isometric' }
+          ].map(p => (
+            <button
+              key={p.id}
+              className={`pill-btn ${viewPreset === p.id ? 'active' : ''}`}
+              onClick={() => setViewPreset(p.id)}
+            >
+              {p.label}
+            </button>
+          ))}
+        </div>
+
+        {/* Visual Shaders Mode */}
+        <div className="glass-pill-bar">
+          {[
+            { id: 'standard', label: 'Realistic' },
+            { id: 'xray', label: 'X-Ray' },
+            { id: 'wireframe', label: 'Hologram' }
+          ].map(m => (
+            <button
+              key={m.id}
+              className={`pill-btn ${visualMode === m.id ? 'active' : ''}`}
+              onClick={() => setVisualMode(m.id)}
+            >
+              {m.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Dynamic Controls Bottom Center */}
+      <div className="viewport-floating-bar bottom-center">
+        <div className="glass-pill-bar playback-bar">
+          <button
+            className={`pill-btn ${isAnimating ? 'active' : ''}`}
+            onClick={() => setIsAnimating(!isAnimating)}
+            title="Toggle Animation (P)"
+          >
+            {isAnimating ? '⏸ Pause' : '▶ Animate'}
+          </button>
+
+          <button
+            className={`pill-btn ${autoRotate ? 'active' : ''}`}
+            onClick={() => setAutoRotate(!autoRotate)}
+            title="Toggle Auto-Rotation (Space)"
+          >
+            {autoRotate ? '🔄 Rotating' : '⏹ Fixed'}
+          </button>
+
+          {activeOrgan === 'heart' && (
+            <div className="bpm-control-wrap">
+              <span className="bpm-label">Rate: {bpm} BPM</span>
+              <input
+                type="range"
+                className="bpm-slider"
+                min={50}
+                max={140}
+                value={bpm}
+                onChange={e => handleBpmChange(parseInt(e.target.value, 10))}
+              />
+              <div className="bpm-quick-presets">
+                <button
+                  className={`bpm-chip ${bpm === 60 ? 'active' : ''}`}
+                  onClick={() => handleBpmChange(60)}
+                >
+                  Resting (60)
+                </button>
+                <button
+                  className={`bpm-chip ${bpm === 75 ? 'active' : ''}`}
+                  onClick={() => handleBpmChange(75)}
+                >
+                  Normal (75)
+                </button>
+                <button
+                  className={`bpm-chip ${bpm === 110 ? 'active' : ''}`}
+                  onClick={() => handleBpmChange(110)}
+                >
+                  Elevated (110)
+                </button>
+              </div>
+            </div>
+          )}
+        </div>
       </div>
 
       {/* ── Right Panel ── */}
@@ -497,6 +836,12 @@ export default function ViewerPage() {
 
       {/* ── Quiz Overlay ── */}
       {quizOpen && <QuizModule onClose={() => setQuizOpen(false)} activeOrgan={activeOrgan} />}
+
+      {/* ── Shortcuts Modal ── */}
+      {shortcutsOpen && <ShortcutsModal onClose={() => setShortcutsOpen(false)} />}
+
+      {/* ── Stats Modal ── */}
+      {statsOpen && <StatsModal onClose={() => setStatsOpen(false)} />}
 
       {/* ── Organ Description Banner ── */}
       {banner && !selectedPart && (
@@ -512,7 +857,7 @@ export default function ViewerPage() {
 
       {/* ── Bottom Bar ── */}
       <footer className="bottom-bar">
-        <span>Left click to rotate · Scroll to zoom · Right click to pan</span>
+        <span>Rotate: Left Click · Zoom: Wheel · Pan: Right Click · Shortcuts: Press ?</span>
       </footer>
     </div>
   )

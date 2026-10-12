@@ -1,4 +1,12 @@
 {
+  "name": "bio-animation",
+  "private": true,
+  "scripts": {
+    "dev": "npm --prefix medatlas3d run dev",
+    "build": "npm --prefix medatlas3d run build",
+    "server": "npm --prefix medatlas3d run server",
+    "start": "npm --prefix medatlas3d run dev"
+  },
   "dependencies": {
     "@react-three/drei": "^10.7.7",
     "@react-three/fiber": "^9.5.0",
